@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notify", "Notify\Notify.csproj", "{F11E57E2-1436-4F9B-A7E6-FCFC8DD22FF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyTests", "NotifyTests\NotifyTests.csproj", "{A7B07E1C-6EF8-4820-A073-E1358FF98826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notify.DAL", "Notify.DAL\Notify.DAL.csproj", "{0C98D658-A8AE-429B-8C81-4BEC8392D8A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F11E57E2-1436-4F9B-A7E6-FCFC8DD22FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11E57E2-1436-4F9B-A7E6-FCFC8DD22FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11E57E2-1436-4F9B-A7E6-FCFC8DD22FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11E57E2-1436-4F9B-A7E6-FCFC8DD22FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B07E1C-6EF8-4820-A073-E1358FF98826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B07E1C-6EF8-4820-A073-E1358FF98826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B07E1C-6EF8-4820-A073-E1358FF98826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B07E1C-6EF8-4820-A073-E1358FF98826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C98D658-A8AE-429B-8C81-4BEC8392D8A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C98D658-A8AE-429B-8C81-4BEC8392D8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C98D658-A8AE-429B-8C81-4BEC8392D8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C98D658-A8AE-429B-8C81-4BEC8392D8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52E808E9-EFA7-41AD-A7ED-644EA6A2BF91}
+	EndGlobalSection
+EndGlobal
