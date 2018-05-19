@@ -9,6 +9,6 @@ namespace NotifyWebApi.DAL.Interfaces
             //IBillRepository Bills { get; }
             //IUserRepository Users { get; }
             int Complete();
-            //Git Commit Slack Test
+            //Git Commit Discord Test
     }
 }
