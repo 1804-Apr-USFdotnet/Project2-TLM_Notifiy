@@ -6,8 +6,8 @@ namespace NotifyWebApi.DAL.Interfaces
     {
         
             ITaskRepository Tasks { get; }
-            IBillRepository Bills { get; }
-            IUserRepository Users { get; }
+            //IBillRepository Bills { get; }
+            //IUserRepository Users { get; }
             int Complete();
         
     }
