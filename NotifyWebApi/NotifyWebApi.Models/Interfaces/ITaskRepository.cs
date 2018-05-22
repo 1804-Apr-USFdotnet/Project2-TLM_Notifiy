@@ -1,4 +1,4 @@
-﻿using NotifyWebApi.DAL.Models;
+﻿using NotifyWebApi.Models;
 
 namespace NotifyWebApi.DAL.Interfaces
 {

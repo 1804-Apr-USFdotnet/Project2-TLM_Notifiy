@@ -1,4 +1,4 @@
-﻿namespace NotifyWebApi.DAL.Models
+﻿namespace NotifyWebApi.Models
 {
     public class TaskItem
     {
