@@ -315,6 +315,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NotifyWebApi.BLL\NotifyWebApi.BLL.csproj">
+      <Project>{50f48230-c3ed-4c69-808f-bf3bd69e3f2a}</Project>
+      <Name>NotifyWebApi.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NotifyWebApi.Repositories\NotifyWebApi.Repositories.csproj">
+      <Project>{4f976492-e525-4a2e-bc43-eb0c82a9bd4b}</Project>
+      <Name>NotifyWebApi.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

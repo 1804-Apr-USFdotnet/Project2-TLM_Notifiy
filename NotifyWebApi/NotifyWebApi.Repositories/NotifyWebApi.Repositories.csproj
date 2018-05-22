@@ -42,5 +42,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NotifyWebApi.Models\NotifyWebApi.Models.csproj">
+      <Project>{dc6f2a7f-2b9f-4ae5-908f-4f209874f349}</Project>
+      <Name>NotifyWebApi.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
