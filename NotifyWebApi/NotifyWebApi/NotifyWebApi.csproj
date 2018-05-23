@@ -229,13 +229,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\TaskItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\NotifyWebApiContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -319,6 +320,10 @@
     <ProjectReference Include="..\NotifyWebApi.BLL\NotifyWebApi.BLL.csproj">
       <Project>{50f48230-c3ed-4c69-808f-bf3bd69e3f2a}</Project>
       <Name>NotifyWebApi.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NotifyWebApi.Models\NotifyWebApi.Models.csproj">
+      <Project>{dc6f2a7f-2b9f-4ae5-908f-4f209874f349}</Project>
+      <Name>NotifyWebApi.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

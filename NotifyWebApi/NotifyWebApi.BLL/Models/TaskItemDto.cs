@@ -9,7 +9,6 @@ namespace NotifyWebApi.BLL.Models
 {
     class TaskItemDto
     {
-
         public int TaskId { get; set; }
         public int UserId { get; set; }
 
