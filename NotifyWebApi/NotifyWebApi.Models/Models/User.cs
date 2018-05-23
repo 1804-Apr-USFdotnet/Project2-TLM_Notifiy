@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NotifyWebApi.Models
 {
-    class User
+    public class EfUser
     {
     }
 }

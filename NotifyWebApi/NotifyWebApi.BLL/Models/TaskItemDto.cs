@@ -1,19 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NotifyWebApi.Models
+namespace NotifyWebApi.BLL.Models
 {
-    public class TaskItem
+    class TaskItemDto
     {
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskId { get; set; }
-        [Required]
         public int UserId { get; set; }
 
-        [Required][StringLength(60)]
+        [Required]
+        [StringLength(60)]
         public string TaskTitle { get; set; }
         [StringLength(255)]
         public string TaskDescription { get; set; }
@@ -30,7 +31,5 @@ namespace NotifyWebApi.Models
         public bool HasDueDate { get; set; }
         public bool HasNotifyDate { get; set; }
         public bool IsCompleted { get; set; }
-
-        public virtual EfUser EfUser { get; set; }
     }
 }
