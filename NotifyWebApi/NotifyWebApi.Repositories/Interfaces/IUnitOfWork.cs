@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NotifyWebApi.DAL.Interfaces
+namespace NotifyWebApi.Repositories.Interfaces
 {
     interface IUnitOfWork : IDisposable
     {

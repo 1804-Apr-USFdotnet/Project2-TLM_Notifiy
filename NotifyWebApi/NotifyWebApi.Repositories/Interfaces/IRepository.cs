@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace NotifyWebApi.DAL.Interfaces
+namespace NotifyWebApi.Repositories.Interfaces
 {
     public interface IRepository<TEnt> where TEnt : class
     {

@@ -1,6 +1,6 @@
 ﻿using NotifyWebApi.Models;
 
-namespace NotifyWebApi.DAL.Interfaces
+namespace NotifyWebApi.Repositories.Interfaces
 {
     interface ITaskRepository : IRepository<TaskItem>
     {
