@@ -9,6 +9,7 @@ namespace NotifyWebApi.Repositories
         public UnitOfWork() {
             _context = new NotifyContext();
             Tasks = new TaskItemRepository(_context);
+            //Bills = new BillItemRepository(_context);//ToDo
         }
 
 
@@ -18,6 +19,7 @@ namespace NotifyWebApi.Repositories
         }
 
         public ITaskRepository Tasks { get; }
+        //public IBillRepository Bills { get; }//ToDo
         public int Complete()
         {
             return _context.SaveChanges();
