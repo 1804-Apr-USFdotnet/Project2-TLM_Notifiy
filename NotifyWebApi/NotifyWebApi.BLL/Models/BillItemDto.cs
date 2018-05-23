@@ -11,11 +11,9 @@ namespace NotifyWebApi.Models
 {
     public class BillItem
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BillId { get; set; }
-        [Required]
         public int UserId { get; set; }
+
         [Required]
         [StringLength(60, ErrorMessage = "Name of bill holder should be 60 characters or less.")]
         public string BillHolder { get; set; }
@@ -29,7 +27,5 @@ namespace NotifyWebApi.Models
         public bool Automatic { get; set; }
         [StringLength(255, ErrorMessage = "Description too long.")]
         public string Description { get; set; }
-        
-        public virtual EfUser EfUser { get; set; }
     }
 }
