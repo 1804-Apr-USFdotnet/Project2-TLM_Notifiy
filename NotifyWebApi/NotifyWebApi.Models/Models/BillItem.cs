@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace NotifyWebApi.Models
 {
     [Table("BillItems", Schema = "Items")]
-    class BillItem
+    public class BillItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

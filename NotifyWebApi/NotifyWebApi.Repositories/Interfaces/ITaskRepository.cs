@@ -2,7 +2,7 @@
 
 namespace NotifyWebApi.Repositories.Interfaces
 {
-    interface ITaskRepository : IRepository<TaskItem>
+    public interface ITaskRepository : IRepository<TaskItem>
     {
     }
 }

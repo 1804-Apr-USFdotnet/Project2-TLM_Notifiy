@@ -9,7 +9,7 @@ namespace NotifyWebApi.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TaskId { get; set; }
+        public long TaskId { get; set; }
         [Required]
         public int UserId { get; set; }
 
