@@ -13,9 +13,9 @@ namespace NotifyWebApi.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BillId { get; set; }
+        public long BillId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         [Required]
         [StringLength(60, ErrorMessage = "Name of bill holder should be 60 characters or less.")]
         public string BillHolder { get; set; }
