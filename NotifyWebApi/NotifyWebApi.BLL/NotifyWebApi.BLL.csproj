@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Associator.cs" />
+    <Compile Include="EfUserBL.cs" />
     <Compile Include="Models\BillItemDto.cs" />
     <Compile Include="Models\TaskItemDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,7 @@ namespace NotifyWebApi.BLL
 {
     public class TaskBL
     {
-        //ToDo Extract Logic to BLL and switch context out with UnitOfWork.
+
         private static readonly MapperConfiguration Config = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<TaskItem, TaskItemDto>();
@@ -90,7 +90,7 @@ namespace NotifyWebApi.BLL
             var taskItem = _mapper.Map<TaskItemDto, TaskItem>(taskItemDto);
             try
             {
-                _uoWork.Tasks.Remove(taskItem);
+                _uoWork.Tasks.Add(taskItem);
                 _uoWork.Complete();
                 return 204;
             }
