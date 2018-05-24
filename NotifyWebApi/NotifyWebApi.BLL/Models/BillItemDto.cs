@@ -9,10 +9,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NotifyWebApi.Models
 {
-    public class BillItem
+    public class BillItemDot
     {
-        public int BillId { get; set; }
-        public int UserId { get; set; }
+        public long BillId { get; set; }
+        public long UserId { get; set; }
 
         [Required]
         [StringLength(60, ErrorMessage = "Name of bill holder should be 60 characters or less.")]
