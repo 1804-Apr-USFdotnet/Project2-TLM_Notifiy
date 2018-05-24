@@ -9,7 +9,7 @@ using NotifyWebApi.Repositories.Interfaces;
 
 namespace NotifyWebApi.BLL
 {
-    internal class TaskBl
+    public class TaskBL
     {
         //ToDo Extract Logic to BLL and switch context out with UnitOfWork.
         private static readonly MapperConfiguration Config = new MapperConfiguration(cfg =>
