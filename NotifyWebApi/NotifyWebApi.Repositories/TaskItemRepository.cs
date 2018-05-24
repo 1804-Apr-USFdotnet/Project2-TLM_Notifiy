@@ -11,6 +11,6 @@ namespace NotifyWebApi.Repositories
         {
         }
 
-        public NotifyContext RevViewsContext => Context as NotifyContext;
+        public NotifyContext NotifyContext => Context as NotifyContext;
     }
 }

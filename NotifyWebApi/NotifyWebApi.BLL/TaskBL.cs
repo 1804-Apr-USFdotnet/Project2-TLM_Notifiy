@@ -69,7 +69,7 @@ namespace NotifyWebApi.BLL
         {
             try
             {
-                var taskItem = _uoWork.Tasks.Get(taskItemDto.TaskId);
+                var taskItem = _uoWork.Tasks.Get((long)taskItemDto.TaskId);
                 taskItem = _mapper.Map(taskItemDto, taskItem);
                 _uoWork.Tasks.Update(taskItem);
                 _uoWork.Complete();

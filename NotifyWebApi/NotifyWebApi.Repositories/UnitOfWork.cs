@@ -19,6 +19,7 @@ namespace NotifyWebApi.Repositories
         }
 
         public ITaskRepository Tasks { get; }
+        public IUserRepository Users { get; }
         public IBillRepository Bills { get; }
         public int Complete()
         {

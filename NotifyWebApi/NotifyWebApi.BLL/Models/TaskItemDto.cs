@@ -9,8 +9,8 @@ namespace NotifyWebApi.BLL.Models
 {
     public class TaskItemDto
     {
-        public int TaskId { get; set; }
-        public int UserId { get; set; }
+        public long? TaskId { get; set; }
+        public long? UserId { get; set; }
 
         [Required]
         [StringLength(60)]
