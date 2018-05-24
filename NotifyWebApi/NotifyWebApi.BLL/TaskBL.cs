@@ -29,7 +29,7 @@ namespace NotifyWebApi.BLL
         ///     Default parameterless constructor that sets the private field
         ///     IUnitOfWork to the application specific implementation: UnitOfWork.
         /// </summary>
-        public TaskBl()
+        public TaskBL()
         {
             _uoWork = new UnitOfWork();
         }
@@ -39,7 +39,7 @@ namespace NotifyWebApi.BLL
         ///     a mock version.  This is the aspect that makes it testable without affecting the database.
         /// </summary>
         /// <param name="littleWorker"></param>
-        public TaskBl(IUnitOfWork littleWorker)
+        public TaskBL(IUnitOfWork littleWorker)
         {
             _uoWork = littleWorker;
         }
