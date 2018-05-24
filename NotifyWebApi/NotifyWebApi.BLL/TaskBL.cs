@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using AutoMapper;
 using NotifyWebApi.BLL.Models;
 using NotifyWebApi.Models;
@@ -65,20 +66,21 @@ namespace NotifyWebApi.BLL
         }
 
 
-        public int PutTaskItem(TaskItemDto taskItemDto)
+        public HttpStatusCode PutTaskItem(TaskItemDto taskItemDto)
         {
+
             try
             {
                 var taskItem = _uoWork.Tasks.Get((long)taskItemDto.TaskId);
                 taskItem = _mapper.Map(taskItemDto, taskItem);
                 _uoWork.Tasks.Update(taskItem);
                 _uoWork.Complete();
-                return 204; //No Content
+                return HttpStatusCode.NoContent; //No Content
             }
             catch (Exception e)
             {
                 //todo implement logger
-                return 500;
+                return HttpStatusCode.InternalServerError;
             }
         }
 
