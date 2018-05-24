@@ -6,7 +6,7 @@ namespace NotifyWebApi.Repositories.Interfaces
 {
     public interface IRepository<TEnt> where TEnt : class
     {
-        TEnt Get(int id);
+        TEnt Get(long id);
         IEnumerable<TEnt> GetAll();
         IEnumerable<TEnt> Find(Expression<Func<TEnt, bool>> predicate);
 

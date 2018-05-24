@@ -2,7 +2,7 @@
 
 namespace NotifyWebApi.Repositories.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         
             ITaskRepository Tasks { get; }

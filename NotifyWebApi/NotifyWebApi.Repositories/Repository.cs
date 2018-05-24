@@ -20,7 +20,7 @@ namespace NotifyWebApi.Repositories
 
 
         //Get by ID
-        public TEnt Get(int id)
+        public TEnt Get(long id)
         {
             return _ents.Find(id);
         }
