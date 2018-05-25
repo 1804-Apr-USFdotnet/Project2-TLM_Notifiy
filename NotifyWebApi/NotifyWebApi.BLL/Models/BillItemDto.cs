@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NotifyWebApi.Models
 {
-    public class BillItemDot
+    public class BillItemDto
     {
         public long BillId { get; set; }
         public long UserId { get; set; }
