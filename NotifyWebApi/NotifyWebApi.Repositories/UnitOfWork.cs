@@ -10,6 +10,7 @@ namespace NotifyWebApi.Repositories
             _context = new NotifyContext();
             Tasks = new TaskItemRepository(_context);
             Bills = new BillItemRepository(_context);
+            Users = new UserRepository(_context);
         }
 
 

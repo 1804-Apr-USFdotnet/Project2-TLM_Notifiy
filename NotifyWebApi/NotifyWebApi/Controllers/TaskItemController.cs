@@ -53,7 +53,7 @@ namespace NotifyWebApi.Controllers
             taskItemDto.UserId = WhoAmI();
 
 
-            ModelState["taskItemDto.UserId"].Errors.Clear();
+            //ModelState["taskItemDto.UserId"].Errors.Clear();
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var taskId = _bl.PostTaskItem(taskItemDto); //todo change BL logic to return ID of crated resource.
