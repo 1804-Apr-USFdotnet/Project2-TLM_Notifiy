@@ -11,8 +11,8 @@ namespace NotifyWebApi.Repositories
     public class NotifyContext : DbContext
     {
         public NotifyContext()
-            :base("Server=.;Database=DisposableDB;Trusted_Connection=True")//Local testing connection
-            //: base("name=NotifyContext")//Will be app context.
+            //:base("Server=.;Database=DisposableDB;Trusted_Connection=True")//Local testing connection
+            : base("name=NotifyContext")//Will be app context.
         { }
 
         public virtual DbSet<TaskItem> Tasks { get; set; }

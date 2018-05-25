@@ -12,7 +12,7 @@ namespace NotifyWebApi.BLL
 {
     public class TaskBL
     {
-        //ToDo Extract Logic to BLL and switch context out with UnitOfWork.
+
         private static readonly MapperConfiguration Config = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<TaskItem, TaskItemDto>();
@@ -56,6 +56,7 @@ namespace NotifyWebApi.BLL
         public TaskItemDto GetTaskItem(long userId, long taskId)
         {
             var taskItem = _uoWork.Tasks.Get(taskId);
+            if (taskItem == null) return null;
             if (taskItem.UserId == userId)
             {
                 var dto = _mapper.Map<TaskItem, TaskItemDto>(taskItem);
@@ -85,18 +86,18 @@ namespace NotifyWebApi.BLL
         }
 
 
-        public int PostTaskItem(TaskItemDto taskItemDto)
+        public long? PostTaskItem(TaskItemDto taskItemDto)
         {
             var taskItem = _mapper.Map<TaskItemDto, TaskItem>(taskItemDto);
             try
             {
-                _uoWork.Tasks.Remove(taskItem);
+                _uoWork.Tasks.Add(taskItem);
                 _uoWork.Complete();
-                return 204;
+                return null;
             }
             catch (Exception e)
             {
-                return 500;
+                return null;
             }
         }
 

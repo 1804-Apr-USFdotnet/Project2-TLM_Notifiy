@@ -21,8 +21,8 @@ namespace NotifyWebApi.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("Server=.;Database=DisposableAuthDB;Trusted_Connection=True")//Local Auth testing connection
-            //: base("DefaultConnection", throwIfV1Schema: false)//Default connection settings
+            //: base("Server=.;Database=DisposableAuthDB;Trusted_Connection=True")//Local Auth testing connection
+            : base("DefaultConnection", throwIfV1Schema: false)//Default connection settings
         {
         }
         
