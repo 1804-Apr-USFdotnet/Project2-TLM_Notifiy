@@ -86,18 +86,18 @@ namespace NotifyWebApi.BLL
         }
 
 
-        public int PostTaskItem(TaskItemDto taskItemDto)
+        public long? PostTaskItem(TaskItemDto taskItemDto)
         {
             var taskItem = _mapper.Map<TaskItemDto, TaskItem>(taskItemDto);
             try
             {
                 _uoWork.Tasks.Add(taskItem);
                 _uoWork.Complete();
-                return 204;
+                return null;
             }
             catch (Exception e)
             {
-                return 500;
+                return null;
             }
         }
 

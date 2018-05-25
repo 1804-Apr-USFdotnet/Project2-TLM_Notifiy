@@ -39,8 +39,11 @@ namespace NotifyWebApi.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             if (id != taskItemDto.TaskId) return BadRequest();
+            var iAm = WhoAmI();
+            var nullCheck = _bl.GetTaskItem(iAm, id);
+            if (nullCheck == null) return NotFound();
 
-            if (WhoAmI() != taskItemDto.UserId) return Unauthorized();
+            if (iAm != taskItemDto.UserId) return Unauthorized();
 
             _bl.PutTaskItem(taskItemDto);
 
@@ -58,7 +61,7 @@ namespace NotifyWebApi.Controllers
             //ModelState["taskItemDto.UserId"].Errors.Clear();
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var taskId = _bl.PostTaskItem(taskItemDto); //todo change BL logic to return ID of crated resource.
+            var taskId = _bl.PostTaskItem(taskItemDto); //todo get id logic
 
             return CreatedAtRoute("DefaultApi", taskId, taskItemDto);
         }
@@ -67,8 +70,6 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(TaskItemDto))]
         public IHttpActionResult DeleteTaskItem(long id)
         {
-            if (GetTaskItem(id) == null) return NotFound();
-
             var iAm = WhoAmI();
             var nullCheck = _bl.GetTaskItem(iAm, id);
             if (nullCheck == null) return NotFound();
