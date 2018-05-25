@@ -84,18 +84,18 @@ namespace NotifyWebApi.BLL
         }
 
 
-        public int PostBillItem(BillItemDto billItemDto)
+        public long? PostBillItem(BillItemDto billItemDto)
         {
             var billItem = _mapper.Map<BillItemDto, BillItem>(billItemDto);
             try
             {
                 _uoWork.Bills.Add(billItem);
                 _uoWork.Complete();
-                return 204;
+                return null;
             }
             catch (Exception e)
             {
-                return 500;
+                return null;
             }
         }
 
