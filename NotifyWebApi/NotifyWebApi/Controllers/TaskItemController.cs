@@ -17,7 +17,7 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(TaskItemDto))]
         public IHttpActionResult GetTaskItems()
         {
-            var request = _bl.GetTaskItems(WhoAmI());
+            var request = _bl.GetTaskItems(GetCurrentUserId());
             return Ok(request);
         }
 
@@ -25,7 +25,7 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(TaskItemDto))]
         public IHttpActionResult GetTaskItem(long id)
         {
-            var result = _bl.GetTaskItem(WhoAmI(), id);
+            var result = _bl.GetTaskItem(GetCurrentUserId(), id);
 
             if (result == null) return NotFound();
 
@@ -39,11 +39,11 @@ namespace NotifyWebApi.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             if (id != taskItemDto.TaskId) return BadRequest();
-            var iAm = WhoAmI();
-            var nullCheck = _bl.GetTaskItem(iAm, id);
+            var currentUserId = GetCurrentUserId();
+            var nullCheck = _bl.GetTaskItem(currentUserId, id);
             if (nullCheck == null) return NotFound();
 
-            if (iAm != taskItemDto.UserId) return Unauthorized();
+            if (currentUserId != taskItemDto.UserId) return Unauthorized();
 
             _bl.PutTaskItem(taskItemDto);
 
@@ -55,7 +55,7 @@ namespace NotifyWebApi.Controllers
         public IHttpActionResult PostTaskItem(TaskItemDto taskItemDto)
         {
             taskItemDto.UserId = null;
-            taskItemDto.UserId = WhoAmI();
+            taskItemDto.UserId = GetCurrentUserId();
 
 
             //ModelState["taskItemDto.UserId"].Errors.Clear();
@@ -70,11 +70,11 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(TaskItemDto))]
         public IHttpActionResult DeleteTaskItem(long id)
         {
-            var iAm = WhoAmI();
-            var nullCheck = _bl.GetTaskItem(iAm, id);
+            var currentUserId = GetCurrentUserId();
+            var nullCheck = _bl.GetTaskItem(currentUserId, id);
             if (nullCheck == null) return NotFound();
 
-            _bl.DeleteTaskItem(iAm, id);
+            _bl.DeleteTaskItem(currentUserId, id);
 
             return Ok();
         }
@@ -84,7 +84,7 @@ namespace NotifyWebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private long WhoAmI()
+        private long GetCurrentUserId()
         {
             var email = User.Identity.Name;
             return Associator.ConvertToId(email);
