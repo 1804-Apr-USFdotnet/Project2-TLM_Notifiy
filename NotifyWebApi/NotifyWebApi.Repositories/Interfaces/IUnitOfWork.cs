@@ -6,7 +6,7 @@ namespace NotifyWebApi.Repositories.Interfaces
     {
         
             ITaskRepository Tasks { get; }
-            //IBillRepository Bills { get; }
+            IBillRepository Bills { get; }
             IUserRepository Users { get; }
             int Complete();
             //Git Commit Discord Test
