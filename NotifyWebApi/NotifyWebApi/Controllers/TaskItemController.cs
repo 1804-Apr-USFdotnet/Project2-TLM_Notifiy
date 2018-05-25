@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
+using Microsoft.Ajax.Utilities;
 using NotifyWebApi.BLL;
 using NotifyWebApi.BLL.Models;
 
@@ -67,7 +68,12 @@ namespace NotifyWebApi.Controllers
         public IHttpActionResult DeleteTaskItem(long id)
         {
             if (GetTaskItem(id) == null) return NotFound();
-            _bl.DeleteTaskItem(WhoAmI(), id);
+
+            var iAm = WhoAmI();
+            var nullCheck = _bl.GetTaskItem(iAm, id);
+            if (nullCheck == null) return NotFound();
+
+            _bl.DeleteTaskItem(iAm, id);
 
             return Ok();
         }

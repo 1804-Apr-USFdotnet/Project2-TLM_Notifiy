@@ -56,6 +56,7 @@ namespace NotifyWebApi.BLL
         public TaskItemDto GetTaskItem(long userId, long taskId)
         {
             var taskItem = _uoWork.Tasks.Get(taskId);
+            if (taskItem == null) return null;
             if (taskItem.UserId == userId)
             {
                 var dto = _mapper.Map<TaskItem, TaskItemDto>(taskItem);
