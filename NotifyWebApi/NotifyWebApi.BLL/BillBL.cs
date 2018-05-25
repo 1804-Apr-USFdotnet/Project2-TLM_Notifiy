@@ -74,7 +74,7 @@ namespace NotifyWebApi.BLL
                 billItem = _mapper.Map(billItemDto, billItem);
                 _uoWork.Bills.Update(billItem);
                 _uoWork.Complete();
-                return HttpStatusCode.NoContent; //No Content
+                return HttpStatusCode.OK; //Ok for updated 
             }
             catch (Exception e)
             {
@@ -83,7 +83,7 @@ namespace NotifyWebApi.BLL
             }
         }
 
-
+        //TODO: must retrun the correct BillId in the post response
         public long? PostBillItem(BillItemDto billItemDto)
         {
             var billItem = _mapper.Map<BillItemDto, BillItem>(billItemDto);
