@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.ModelBinding;
 using NotifyWebApi.BLL;
 using NotifyWebApi.BLL.Models;
 
@@ -21,9 +22,9 @@ namespace NotifyWebApi.Controllers
 
         // GET: api/TaskItems/5
         [ResponseType(typeof(TaskItemDto))]
-        public IHttpActionResult GetTaskItem(long taskId)
+        public IHttpActionResult GetTaskItem(long id)
         {
-            var result = _bl.GetTaskItem(WhoAmI(), taskId);
+            var result = _bl.GetTaskItem(WhoAmI(), id);
 
             if (result == null) return NotFound();
 
@@ -63,10 +64,10 @@ namespace NotifyWebApi.Controllers
 
         // DELETE: api/TaskItems/5
         [ResponseType(typeof(TaskItemDto))]
-        public IHttpActionResult DeleteTaskItem(long taskId)
+        public IHttpActionResult DeleteTaskItem(long id)
         {
-            if (GetTaskItem(taskId) == null) return NotFound();
-            _bl.DeleteTaskItem(WhoAmI(), taskId);
+            if (GetTaskItem(id) == null) return NotFound();
+            _bl.DeleteTaskItem(WhoAmI(), id);
 
             return Ok();
         }
