@@ -1,5 +1,6 @@
 ﻿using NotifyWebApi.BLL;
 using NotifyWebApi.Models;
+using System;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -54,9 +55,7 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(BillItemDto))]
         public IHttpActionResult PostBillItem(BillItemDto billItemDto)
         {
-            //billItemDto.UserId = null;  //might have to change the DTO model to reflect this
             billItemDto.UserId = GetCurrentUserId();
-
 
             //ModelState["billItemDto.UserId"].Errors.Clear();
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -66,18 +65,21 @@ namespace NotifyWebApi.Controllers
             return CreatedAtRoute("DefaultApi", billId, billItemDto);
         }
 
-
         // DELETE: api/BillItems/2
         [ResponseType(typeof(BillItemDto))]
         public IHttpActionResult DeleteBillItem(long id)
         {
             var currentUserId = GetCurrentUserId();
             var nullCheck = _bl.GetBillItem(currentUserId, id);
-            if (nullCheck == null) return NotFound();
-
-            _bl.DeleteBillItem(currentUserId, id);
-
-            return Ok();
+            if (nullCheck == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _bl.DeleteBillItem(currentUserId, id);
+                return StatusCode(HttpStatusCode.NoContent);
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -85,7 +87,6 @@ namespace NotifyWebApi.Controllers
             base.Dispose(disposing);
         }
         
-
         private long GetCurrentUserId()
         {
             var email = User.Identity.Name;

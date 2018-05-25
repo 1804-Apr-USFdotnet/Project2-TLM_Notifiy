@@ -19,8 +19,7 @@ namespace NotifyWebApi.BLL
             cfg.CreateMap<BillItemDto, BillItem>();
             cfg.CreateMap<IEnumerable<BillItem>, List<BillItemDto>>();
         });
-
-
+        
         private readonly IUnitOfWork _uoWork;
 
         private readonly IMapper _mapper = Config.CreateMapper();
@@ -44,7 +43,7 @@ namespace NotifyWebApi.BLL
         {
             _uoWork = littleWorker;
         }
-
+        
 
         public IEnumerable<BillItemDto> GetBillItems(long userId)
         {
@@ -56,15 +55,14 @@ namespace NotifyWebApi.BLL
         public BillItemDto GetBillItem(long userId, long billId)
         {
             var billItem = _uoWork.Bills.Get(billId);
+            if (billItem == null) return null;
             if (billItem.UserId == userId)
             {
                 var dto = _mapper.Map<BillItem, BillItemDto>(billItem);
                 return dto;
             }
-
-            return null; //Controller will catch know and redirect to bad request.
+            return null;  //Controller will catch know and redirect to bad request.
         }
-
 
         public HttpStatusCode PutBillItem(BillItemDto billItemDto)
         {
