@@ -3,11 +3,13 @@ using NotifyWebApi.Models;
 using System;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace NotifyWebApi.Controllers
 {
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BillItemController : ApiController
     {
         private readonly BillBL _bl = new BillBL();

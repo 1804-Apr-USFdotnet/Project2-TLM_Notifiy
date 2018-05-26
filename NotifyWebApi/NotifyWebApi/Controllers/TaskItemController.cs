@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.Ajax.Utilities;
@@ -9,6 +10,7 @@ using NotifyWebApi.BLL.Models;
 namespace NotifyWebApi.Controllers
 {
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TaskItemController : ApiController
     {
         private readonly TaskBL _bl = new TaskBL();
