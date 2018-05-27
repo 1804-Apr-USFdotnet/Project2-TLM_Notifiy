@@ -455,7 +455,7 @@ var UserService = /** @class */ (function () {
             Password: user.Password,
             ConfirmPassword: user.ConfirmPassword
         };
-        var reqHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'No-Auth': 'True' });
+        var reqHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'No-Auth': 'True' }); //original
         return this.http.post(this.rootUrl + '/api/Account/Register', body, { headers: reqHeader });
     };
     //This is similar to what we did in PostMan
@@ -637,12 +637,8 @@ var SignUpComponent = /** @class */ (function () {
         var _this = this;
         this.userService.registerUser(form.value)
             .subscribe(function (data) {
-            if (data.Succeeded == true) {
-                _this.resetForm(form);
-                _this.toastr.success('User registration successful');
-            }
-            else
-                _this.toastr.error(data.Errors[0]);
+            _this.resetForm(form);
+            _this.toastr.success('User registration successful');
         });
     };
     SignUpComponent = __decorate([
@@ -786,7 +782,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Ram Adhikari\Desktop\FinalAngular\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Revature\Project2-TLM_Notifiy\NotifyAngular\src\main.ts */"./src/main.ts");
 
 
 /***/ })
