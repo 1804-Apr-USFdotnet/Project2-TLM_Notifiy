@@ -322,11 +322,12 @@ namespace NotifyWebApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        [HttpPost]
+        public async Task<EfUser> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return null;
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
@@ -335,11 +336,16 @@ namespace NotifyWebApi.Controllers
 
             if (!result.Succeeded)
             {
-                return GetErrorResult(result);
+                return null;
             }
-            var bl = new EfUserBL();
+            var bl = new EfUserBL();       
+
             bl.Create(model.Email);
-            return Ok();
+
+            EfUser efUser = new EfUser();
+            efUser.Email = model.Email;
+
+            return efUser;
         }
 
         // POST api/Account/RegisterExternal
