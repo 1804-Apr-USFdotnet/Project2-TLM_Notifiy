@@ -31,9 +31,25 @@ export class UserService {
   }
 
   //Making API http get request
-  getUserClaims(){
+  getUserInfo(){
    return  this.http.get(this.rootUrl+'/api/Account/UserInfo');
   }
+
+  /**********************TaskItem**********************/
+
+  //GET api/TaskItem
+  //GET api/TaskItem/{id}	 
+  //PUT api/TaskItem/{id}
+  //POST api/TaskItem	
+  //DELETE api/TaskItem/{id}
+
+
+  /**********************BillItem**********************/
+  //GET api/BillItem
+  //GET api/BillItem/{id}	
+  //PUT api/BillItem/{id}
+  //POST api/BillItem
+  //DELETE api/BillItem/{id}
 
 }
 

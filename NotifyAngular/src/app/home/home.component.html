@@ -1,7 +1,7 @@
 <nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">
-      <i class="material-icons">cloud</i>Dotnet Mob App</a>
+  <div class="nav-wrapper green">
+    <a href="home" class="brand-logo center">
+      <i class="material-icons">note_add</i>Notify</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         <a (click)="Logout()">Logout</a>
@@ -9,12 +9,42 @@
     </ul>
   </div>
 </nav>
-<div class="row" *ngIf="userClaims">
-  <div class="col s12 m7">
-    <div class="card">
-      <div class="card-content">
-        <span>Email : {{userClaims.Email}}</span>
+
+<div class="col s12 m6">
+  <div class="card blue">
+    <div class="card-content white-text">
+      <div class="row" *ngIf="userClaims">
+        <h5>
+          <span>Welcome, {{userClaims.Email}}!</span>
+        </h5>
+      </div>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width tabs-transparent">
+        <!--When Tasks is triggered, it should use the /tasks route.
+          The /tasks route is defined in routes.ts file which is imported
+          in the app.module file. The active is just for css on tasks tab -->
+        <li class="tab">
+          <a routerLink='/tasks' routerLinkActive='active'>TASKS</a>
+        </li>
+        <li class="tab">
+          <a routerLink='/bills' routerLinkActive='active'>BILLS</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-content blue lighten-5">
+      <div>
+        <router-outlet></router-outlet>
+        <!--The stuff from each route mentioned above gets displayed here-->
       </div>
     </div>
   </div>
 </div>
+
+
+
+  
+
+
+
+

@@ -108,12 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./routes */ "./src/app/routes.ts");
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
 /* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
+/* harmony import */ var _task_task_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./task/task.component */ "./src/app/task/task.component.ts");
+/* harmony import */ var _bill_bill_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./bill/bill.component */ "./src/app/bill/bill.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -140,7 +144,9 @@ var AppModule = /** @class */ (function () {
                 _user_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_12__["SignUpComponent"],
                 _user_user_component__WEBPACK_IMPORTED_MODULE_9__["UserComponent"],
                 _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_10__["SignInComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"]
+                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
+                _task_task_component__WEBPACK_IMPORTED_MODULE_16__["TaskComponent"],
+                _bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -300,6 +306,69 @@ var AuthInterceptor = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/bill/bill.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/bill/bill.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/bill/bill.component.html":
+/*!******************************************!*\
+  !*** ./src/app/bill/bill.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  bill works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/bill/bill.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/bill/bill.component.ts ***!
+  \****************************************/
+/*! exports provided: BillComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BillComponent", function() { return BillComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BillComponent = /** @class */ (function () {
+    function BillComponent() {
+    }
+    BillComponent.prototype.ngOnInit = function () {
+    };
+    BillComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-bill',
+            template: __webpack_require__(/*! ./bill.component.html */ "./src/app/bill/bill.component.html"),
+            styles: [__webpack_require__(/*! ./bill.component.css */ "./src/app/bill/bill.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], BillComponent);
+    return BillComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/home.component.css":
 /*!*****************************************!*\
   !*** ./src/app/home/home.component.css ***!
@@ -318,7 +387,7 @@ module.exports = "/**Approved**/"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n  <div class=\"nav-wrapper\">\n    <a href=\"#\" class=\"brand-logo center\">\n      <i class=\"material-icons\">cloud</i>Dotnet Mob App</a>\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n      <li>\n        <a (click)=\"Logout()\">Logout</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n<div class=\"row\" *ngIf=\"userClaims\">\n  <div class=\"col s12 m7\">\n    <div class=\"card\">\n      <div class=\"card-content\">\n        <span>Email : {{userClaims.Email}}</span>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<nav>\n  <div class=\"nav-wrapper\">\n    <class=\"brand-logo center\">\n      <i class=\"material-icons\">note_add</i>Notify</a>\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n      <li>\n        <a (click)=\"Logout()\">Logout</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<div class=\"card blue\">\n  <div class=\"card-content\">\n    <h1>Welcome, <span>{{userClaims.Email}}</span>!</h1>\n  </div>\n  <div class=\"card-tabs\">\n    <ul class=\"tabs tabs-fixed-width\">\n      <li class=\"tab\"><a href=\"#Task1\">Tasks</a></li>\n      <li class=\"tab\"><a class=\"active\" href=\"#Bills2\">Bills</a></li>\n    </ul>\n  </div>\n  <div class=\"card-content grey lighten-4\">\n    <div id=\"Task1\">Tasks</div>\n    <div id=\"Bills2\">Bills</div>\n  </div>\n</div>\n\n\n<div class=\"row\" *ngIf=\"userClaims\">\n  <div class=\"col s12 m7\">\n    <div class=\"card\">\n      <div class=\"card-content\">\n        <span>Email : {{userClaims.Email}}</span>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -356,7 +425,7 @@ var HomeComponent = /** @class */ (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.getUserClaims().subscribe(function (data) {
+        this.userService.getUserInfo().subscribe(function (data) {
             _this.userClaims = data;
         });
     };
@@ -466,7 +535,7 @@ var UserService = /** @class */ (function () {
         return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
     };
     //Making API http get request
-    UserService.prototype.getUserClaims = function () {
+    UserService.prototype.getUserInfo = function () {
         return this.http.get(this.rootUrl + '/api/Account/UserInfo');
     };
     UserService = __decorate([
@@ -479,6 +548,69 @@ var UserService = /** @class */ (function () {
 }());
 
 //Approved
+
+
+/***/ }),
+
+/***/ "./src/app/task/task.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/task/task.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/task/task.component.html":
+/*!******************************************!*\
+  !*** ./src/app/task/task.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  task works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/task/task.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/task/task.component.ts ***!
+  \****************************************/
+/*! exports provided: TaskComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TaskComponent = /** @class */ (function () {
+    function TaskComponent() {
+    }
+    TaskComponent.prototype.ngOnInit = function () {
+    };
+    TaskComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-task',
+            template: __webpack_require__(/*! ./task.component.html */ "./src/app/task/task.component.html"),
+            styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/task/task.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TaskComponent);
+    return TaskComponent;
+}());
+
 
 
 /***/ }),
