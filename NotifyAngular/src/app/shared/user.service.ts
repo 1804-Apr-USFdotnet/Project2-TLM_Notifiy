@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
@@ -5,12 +6,13 @@ import { Observable } from 'rxjs';
 
 import { RegisterBindingModel } from './user.model';
 import { TaskItem } from './taskitem.model';
+import { BillItem } from './billItem.model';
 
 @Injectable({
   providedIn: 'root'  //Didn't have this
 })
 export class UserService {
-  readonly rootUrl = 'http://localhost:52739';
+  readonly rootUrl = environment.rootUrl;
   constructor(private http: HttpClient) { }
 
   registerUser(user: RegisterBindingModel) {
@@ -65,12 +67,31 @@ export class UserService {
 
   
   /**********************BillItem**********************/
-  //GET api/BillItem
-  //GET api/BillItem/{id}	
-  //PUT api/BillItem/{id}
-  //POST api/BillItem
-  //DELETE api/BillItem/{id}
 
+  //GET api/BillItem
+  getAllBillItems() {
+    return this.http.get(this.rootUrl + '/api/BillItem');
+  }
+
+  //GET api/BillItem/{id}	
+  getBillItem(id: Number) {
+    return this.http.get(this.rootUrl + `/api/BillItem/${id}`);
+  }
+
+  //PUT api/BillItem/{id}
+  putBillItem(id: Number, putBill: BillItem) {
+    return this.http.put(this.rootUrl + `/api/BillItem/${id}`, putBill);
+  }
+
+  //POST api/BillItem
+  postBillItem(postBill: BillItem) {
+    return this.http.post(this.rootUrl + '/api/BillItem', postBill);
+  }
+
+  //DELETE api/BillItem/{id}
+  deleteBillItem(id: Number) {
+    return this.http.delete(this.rootUrl + `/api/BillItem/${id}`);
+  }
 }
 
 

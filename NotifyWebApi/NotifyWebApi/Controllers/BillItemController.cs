@@ -1,6 +1,7 @@
 ﻿using NotifyWebApi.BLL;
 using NotifyWebApi.Models;
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -39,16 +40,17 @@ namespace NotifyWebApi.Controllers
         public IHttpActionResult PutBillItem(long id, BillItemDto billItemDto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            Debug.WriteLine("5");
             if (id != billItemDto.BillId) return BadRequest();
+            Debug.WriteLine("5");
             var currentUserId = GetCurrentUserId();
             var nullCheck = _bl.GetBillItem(currentUserId, id);
             if (nullCheck == null) return NotFound();
-
+            Debug.WriteLine("5");
             if (currentUserId != billItemDto.UserId) return Unauthorized();
-
+            Debug.WriteLine("5");
             _bl.PutBillItem(billItemDto);
-
+            Debug.WriteLine("5");
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -63,7 +65,7 @@ namespace NotifyWebApi.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var billId = _bl.PostBillItem(billItemDto); //todo get id logic
-
+            
             return CreatedAtRoute("DefaultApi", billId, billItemDto);
         }
 

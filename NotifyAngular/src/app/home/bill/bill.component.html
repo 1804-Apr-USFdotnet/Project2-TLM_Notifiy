@@ -1,3 +1,67 @@
-<p>
-    This is from my bill component html page!
-</p>
+<h1>Bills</h1>
+<div class="row" *ngIf="billBucket">
+  <ul>
+    <li *ngFor="let bill of billBucket">
+      {{bill.Description}}
+      <p>Due: {{ bill.DueDate | date: 'longDate'}} &nbsp;
+        <input type="checkbox" id="paid" (change)="onPut(bill.BillId, bill)" [(ngModel)]="bill.Paid">
+        <label for="paid">Paid</label>
+      </p>
+      <br> Amount: {{bill.AmountOwed | currency: 'USD'}} &nbsp;
+      <input type="checkbox" id="auto" (change)="onPut(bill.BillId, bill)" [(ngModel)]="bill.Automatic">
+      <label for="auto">Automatic</label>
+      <br> 
+      <button class="btn btn-success" (click)="onDetail(bill.BillId)" name="details">Details</button>
+      <form id="detail{{bill.BillId}}" #putBill="ngForm" class="col s12 white" (ngSubmit)="onPut(bill.BillId, bill)" style="display:none">
+        <div>
+          <input type="text" name="putCompany" [(ngModel)]="bill.BillHolder" required>
+        </div>
+        <div>
+          <input type="date" name="putDate" [(ngModel)]="bill.DueDate" required>
+        </div>
+        <div>
+          <input type="text" name="putAmount" [(ngModel)]="bill.AmountOwed" required>
+        </div>
+        <div>
+          <input type="text" name="putDescription" [(ngModel)]="bill.Description">
+        </div>
+        <div>
+          <button class="btn btn-success btn-submit" id="saveButton" (click)="onPut(bill.BillId, bill)">Save Changes</button>
+          <button class="btn btn-success" id="cancelButton" (click)="onDetail(bill.BillId)">Cancel</button>
+          <button class="btn btn-success" id="deleteButton" (click)="onDelete(bill.BillId)">Delete</button>
+        </div>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<form class="col s12 white" name="form?">
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="billHolder">Company: </label>
+      <input type="text" name="billHolder" [(ngModel)]="billHolder" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="date" name="dueDate" [(ngModel)]="dueDate" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="amountOwed">Amount Owed: </label>
+      <input type="text" name="amountOwed" [(ngModel)]="amountOwed" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="description">Description: </label>
+      <input type="text" name="description" [(ngModel)]="description">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <button class="btn btn-success btn-submit" type="submit" (click)="onPost()">Post</button>
+    </div>
+  </div>
+</form>
