@@ -11,15 +11,15 @@
             <br> {{ task.DueDateTime | date:'longDate' }}
           </div>
           <div class="card-panel hoverable card-action">
-            <a href="#">
+
+            <button class="btn btn-success" id="putButton" (click)="OnPut(task.TaskId, task)">
               <i class="material-icons prefix">edit</i>
-            </a>
-            <a href="#">
+            </button><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+           
+            <button class="btn btn-success" id="deleteButton" (click)="OnDelete(task.TaskId)">
               <i class="material-icons prefix">delete</i>
-            </a>
-            <a href="https://mail.google.com" target="_blank">
-                <i class="material-icons prefix">email</i>
-              </a>
+            </button>
+
           </div>
         </div>
       </div>
@@ -27,10 +27,50 @@
   </div>
 </div>
 
-<a routerLink='/input-form' routerLinkActive='active' class="btn-floating btn-large cyan pulse"><i class="material-icons">add_circle</i></a>
-<div class="row">
-    <router-outlet></router-outlet>
+<br> <hr> <br>
+
+<form #postForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitPost(Title.value,Description.value,DueDate.value)">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">subject</i>
+        <input type="text" #Title ngModel name="Title" placeholder="Title" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">description</i>
+        <input type="text" #Description ngModel name="Description" placeholder="Description" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">date_range</i>
+        <input type="date" #DueDate ngModel name="DueDate" placeholder="DueDate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button [disabled]="!postForm.valid" class="btn-floating btn-large cyan pulse" type="submit">
+            <i class="material-icons">add_circle</i>
+        </button>
+      </div>
+    </div>
+</form>
+
+
+<div>
+  <br><br>
+  <hr>
+  <span>&copy; 2018 Notify</span>
+  <a href="https://mail.google.com" target="_blank">
+    <i class="material-icons prefix">email</i> 
+  </a>
+  <br>
+ 
 </div>
+
+
+
 
 
 

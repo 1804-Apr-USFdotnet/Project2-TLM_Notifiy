@@ -151,7 +151,7 @@ var AppModule = /** @class */ (function () {
                 _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
                 _home_task_task_component__WEBPACK_IMPORTED_MODULE_16__["TaskComponent"],
                 _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"],
-                _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_19__["InputFormComponent"],
+                _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_19__["InputFormComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -566,7 +566,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--For the cards-->\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <div *ngFor=\"let task of taskBucket\" class=\"card\">\r\n    <div class=\"card-block\">\r\n      <div class=\"col s12 m6 l3\">\r\n        <div class=\"card blue-grey darken-1\">\r\n          <div class=\"card-content white-text\">\r\n            <span class=\"card-title\"> {{task.TaskTitle | uppercase}}</span>\r\n            <hr>\r\n            <p>{{task.TaskDescription}}</p>\r\n            <br> {{ task.DueDateTime | date:'longDate' }}\r\n          </div>\r\n          <div class=\"card-panel hoverable card-action\">\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">edit</i>\r\n            </a>\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">delete</i>\r\n            </a>\r\n            <a href=\"https://mail.google.com\" target=\"_blank\">\r\n                <i class=\"material-icons prefix\">email</i>\r\n              </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<a routerLink='/input-form' routerLinkActive='active' class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a>\r\n<div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<!--For the cards-->\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <div *ngFor=\"let task of taskBucket\" class=\"card\">\r\n    <div class=\"card-block\">\r\n      <div class=\"col s12 m6 l3\">\r\n        <div class=\"card blue-grey darken-1\">\r\n          <div class=\"card-content white-text\">\r\n            <span class=\"card-title\"> {{task.TaskTitle | uppercase}}</span>\r\n            <hr>\r\n            <p>{{task.TaskDescription}}</p>\r\n            <p>{{task.TaskId}}</p>\r\n            <br> {{ task.DueDateTime | date:'longDate' }}\r\n          </div>\r\n          <div class=\"card-panel hoverable card-action\">\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">edit</i>\r\n            </a>\r\n            <button class=\"btn btn-success\" id=\"deleteButton\" (click)=\"OnDeletePost(task.TaskId)\">\r\n              <i class=\"material-icons prefix\">delete</i></button>\r\n              \r\n            <a href=\"https://mail.google.com\" target=\"_blank\">\r\n                <i class=\"material-icons prefix\">email</i>\r\n              </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<a routerLink='/input-form' routerLinkActive='active' class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a>\r\n<div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -582,6 +582,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -593,9 +594,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var TaskComponent = /** @class */ (function () {
-    function TaskComponent(userService) {
+    function TaskComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
+        this.isDeleteError = false;
     }
     //We don't have to put it in here
     TaskComponent.prototype.ngOnInit = function () {
@@ -604,13 +608,23 @@ var TaskComponent = /** @class */ (function () {
             _this.taskBucket = data;
         });
     };
+    TaskComponent.prototype.OnDeletePost = function (id) {
+        var _this = this;
+        this.userService.deleteTaskItem(id).subscribe(function (data) {
+            _this.router.navigate(['/tasks']);
+            console.log("Deleted " + id);
+        }, function (err) {
+            console.log(err);
+            _this.isDeleteError = true;
+        });
+    };
     TaskComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-task',
             template: __webpack_require__(/*! ./task.component.html */ "./src/app/home/task/task.component.html"),
             styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/home/task/task.component.css")]
         }),
-        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], TaskComponent);
     return TaskComponent;
 }());
