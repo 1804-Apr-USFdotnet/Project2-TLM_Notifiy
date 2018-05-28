@@ -1,47 +1,40 @@
+<!--For the cards-->
 <div class="row" *ngIf="taskBucket">
-  <p>Works!</p>
-  <ul>
-    <li *ngFor="let task of taskBucket">
-      TaskDescription : {{task.TaskDescription}} <br>
-      DueDateTime: {{ task.DueDateTime | date:'longDate' }}
-    </li>
-  </ul>
+  <div *ngFor="let task of taskBucket" class="card">
+    <!-- <a [routerLink]="['/presentation', presentation._id]"></a> -->
+    <div class="card-block">
+      <div class="col s12 m6 l3">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"> {{task.TaskTitle | uppercase}}</span>
+            <hr>
+            <p>{{task.TaskDescription}}</p>
+            <br> {{ task.DueDateTime | date:'longDate' }}
+          </div>
+          <div class="card-panel hoverable card-action">
+            <a href="#">
+              <i class="material-icons prefix">edit</i>
+            </a>
+            <a href="#">
+              <i class="material-icons prefix">delete</i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<form #postForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitPost(Title.value,Description.value,DueDate.value)">
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">subject</i>
-      <input type="text" #Title ngModel name="Title" placeholder="Title" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">description</i>
-      <input type="text" #Description ngModel name="Description" placeholder="Description" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">date_range</i>
-      <input type="date" #DueDate ngModel name="DueDate" placeholder="DueDate" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <button [disabled]="!postForm.valid" class="btn btn-success btn-submit" type="submit">Post</button>
-    </div>
-  </div>
-</form>
+<a routerLink='/input-form' routerLinkActive='active' class="btn-floating btn-large cyan pulse"><i class="material-icons">add_circle</i></a>
+<div class="row">
+    <router-outlet></router-outlet>
+</div>
+
+<!--make it like a button-->
+<!-- <button class="btn-floating btn-large cyan pulse" type="submit"><i class="material-icons">add_circle</i></button> -->
 
 
 
-<!-- <div class="row">
-  <div class="checkbox col s12">
-    <input type="checkbox" id="completeTask" ngModel name="TaskCompleted">
-    <label for="completeTask">Completed?</label>
-  </div>
-</div> -->
 
 
 

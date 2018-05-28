@@ -1,0 +1,27 @@
+
+<form #postForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitPost(Title.value,Description.value,DueDate.value)">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">subject</i>
+        <input type="text" #Title ngModel name="Title" placeholder="Title" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">description</i>
+        <input type="text" #Description ngModel name="Description" placeholder="Description" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">date_range</i>
+        <input type="date" #DueDate ngModel name="DueDate" placeholder="DueDate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button type="submit"><a class="btn-floating btn-large cyan pulse"><i class="material-icons">add_circle</i></a></button>
+        <!-- <button [disabled]="!postForm.valid" class="btn btn-success btn-submit" type="submit">Post</button> -->
+      </div>
+    </div>
+  </form>

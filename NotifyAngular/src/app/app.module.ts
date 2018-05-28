@@ -19,6 +19,8 @@ import { TaskComponent } from './home/task/task.component';
 import { BillComponent } from './home/bill/bill.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { InputFormComponent } from './home/input-form/input-form.component';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SignInComponent,
     HomeComponent,
     TaskComponent,
-    BillComponent
+    BillComponent,
+    InputFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
 })
 export class TaskComponent implements OnInit {
   taskBucket: TaskItem;
-  isPostError : boolean = false;
   
-  constructor(private userService : UserService, private router : Router) { }
+  constructor(private userService : UserService) { }
 
   //We don't have to put it in here
   ngOnInit() {
@@ -22,29 +21,4 @@ export class TaskComponent implements OnInit {
       this.taskBucket = data;
     });
   }
-
-  OnSubmitPost(Title : string, Description : string, DueDate: Date) {
-    const postedTask: TaskItem = {
-      TaskId: 0,
-      UserId: 0,
-      TaskTitle: Title,
-      TaskDescription: Description,
-      DueDateTime: DueDate,
-      NotifyDateTime: DueDate,
-      CreatedDate: DueDate,
-      ModifiedDate: DueDate,
-      HasDueDate: true,
-      HasNotifyDate: false,
-      IsCompleted: false
-    }
-    this.userService.postTaskItem(postedTask).subscribe((data: any) => {
-      this.router.navigate(['/tasks']);
-      console.log("yeah posted");
-    },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-        this.isPostError = true;
-      });
-  }
-
 }

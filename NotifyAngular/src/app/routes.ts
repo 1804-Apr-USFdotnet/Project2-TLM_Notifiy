@@ -6,6 +6,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { TaskComponent } from './home/task/task.component';
 import { BillComponent } from './home/bill/bill.component';
+import { InputFormComponent } from './home/input-form/input-form.component';
 
 export const appRoutes: Routes = [
     //The home component requires authentication
@@ -21,6 +22,10 @@ export const appRoutes: Routes = [
     {
         path: 'bills', component: HomeComponent, canActivate:[AuthGuard],
         children: [{ path: '', component: BillComponent }]
+    },
+    {
+        path: 'input-form', component: HomeComponent, canActivate:[AuthGuard],
+        children: [{ path: '', component: InputFormComponent }]
     },
 
     //These routes do not need authentication

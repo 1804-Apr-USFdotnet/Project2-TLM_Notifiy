@@ -111,12 +111,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_task_task_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/task/task.component */ "./src/app/home/task/task.component.ts");
 /* harmony import */ var _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/bill/bill.component */ "./src/app/home/bill/bill.component.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./home/input-form/input-form.component */ "./src/app/home/input-form/input-form.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -148,7 +150,8 @@ var AppModule = /** @class */ (function () {
                 _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_10__["SignInComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
                 _home_task_task_component__WEBPACK_IMPORTED_MODULE_16__["TaskComponent"],
-                _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"]
+                _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"],
+                _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_19__["InputFormComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -452,6 +455,69 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/home/input-form/input-form.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/home/input-form/input-form.component.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/home/input-form/input-form.component.html":
+/*!***********************************************************!*\
+  !*** ./src/app/home/input-form/input-form.component.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  input-form works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/input-form/input-form.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/home/input-form/input-form.component.ts ***!
+  \*********************************************************/
+/*! exports provided: InputFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputFormComponent", function() { return InputFormComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var InputFormComponent = /** @class */ (function () {
+    function InputFormComponent() {
+    }
+    InputFormComponent.prototype.ngOnInit = function () {
+    };
+    InputFormComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-input-form',
+            template: __webpack_require__(/*! ./input-form.component.html */ "./src/app/home/input-form/input-form.component.html"),
+            styles: [__webpack_require__(/*! ./input-form.component.css */ "./src/app/home/input-form/input-form.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], InputFormComponent);
+    return InputFormComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/task/task.component.css":
 /*!**********************************************!*\
   !*** ./src/app/home/task/task.component.css ***!
@@ -470,7 +536,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  This is from my task component html page!\r\n</p>\r\n\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <p>Works!</p>\r\n  <ul>\r\n    <li *ngFor=\"let task of taskBucket\">\r\n      TaskDescription : {{task.TaskDescription}} <br>\r\n      DueDateTime: {{ task.DueDateTime | date:'longDate' }}\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">subject</i>\r\n      <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">description</i>\r\n      <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">date_range</i>\r\n      <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"checkbox col s12\">\r\n    <input type=\"checkbox\" id=\"completeTask\" ngModel name=\"TaskCompleted\">\r\n    <label for=\"completeTask\">Completed?</label>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<!--For the cards-->\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <div *ngFor=\"let task of taskBucket\" class=\"card\">\r\n    <!-- <a [routerLink]=\"['/presentation', presentation._id]\"></a> -->\r\n    <div class=\"card-block\">\r\n      <div class=\"col s12 m6 l3\">\r\n        <div class=\"card blue-grey darken-1\">\r\n          <div class=\"card-content white-text\">\r\n            <span class=\"card-title\"> {{task.TaskTitle | uppercase}}</span>\r\n            <hr>\r\n            <p>{{task.TaskDescription}}</p>\r\n            <br> {{ task.DueDateTime | date:'longDate' }}\r\n          </div>\r\n          <div class=\"card-panel hoverable card-action\">\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">edit</i>\r\n            </a>\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">delete</i>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<a  routerLink='/input-form' routerLinkActive='active'>Form Stuff</a>\r\n<div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n<!-- <a class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a> -->\r\n<!-- <button class=\"btn-floating btn-large cyan pulse\" type=\"submit\"><i class=\"material-icons\">add_circle</i></button> -->\r\n\r\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">subject</i>\r\n      <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">description</i>\r\n      <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">date_range</i>\r\n      <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <button type=\"submit\"><a class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a></button>\r\n      <!-- <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button> -->\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -567,6 +633,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
 /* harmony import */ var _home_task_task_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/task/task.component */ "./src/app/home/task/task.component.ts");
 /* harmony import */ var _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/bill/bill.component */ "./src/app/home/bill/bill.component.ts");
+/* harmony import */ var _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/input-form/input-form.component */ "./src/app/home/input-form/input-form.component.ts");
+
 
 
 
@@ -587,6 +655,10 @@ var appRoutes = [
     {
         path: 'bills', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
         children: [{ path: '', component: _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_6__["BillComponent"] }]
+    },
+    {
+        path: 'input-form', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
+        children: [{ path: '', component: _home_input_form_input_form_component__WEBPACK_IMPORTED_MODULE_7__["InputFormComponent"] }]
     },
     //These routes do not need authentication
     {
