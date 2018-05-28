@@ -1,5 +1,5 @@
 export class TaskItem{
-    TaskId: Number;                //DatabaseGenerate on the controller
+    TaskId: Number;                //DatabaseGenerated on the controller
     UserId: Number;                //Required
     TaskTitle: string;             //Required StringLength(60)
     TaskDescription: string;       //StringLength(255)
@@ -11,4 +11,8 @@ export class TaskItem{
     HasNotifyDate: boolean;
     IsCompleted: boolean;
 }
+
+//Approved
+
+
 

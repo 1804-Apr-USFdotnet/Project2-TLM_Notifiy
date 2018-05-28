@@ -108,14 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./routes */ "./src/app/routes.ts");
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
 /* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
-/* harmony import */ var _task_task_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./task/task.component */ "./src/app/task/task.component.ts");
-/* harmony import */ var _bill_bill_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./bill/bill.component */ "./src/app/bill/bill.component.ts");
+/* harmony import */ var _home_task_task_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/task/task.component */ "./src/app/home/task/task.component.ts");
+/* harmony import */ var _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/bill/bill.component */ "./src/app/home/bill/bill.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -145,8 +147,8 @@ var AppModule = /** @class */ (function () {
                 _user_user_component__WEBPACK_IMPORTED_MODULE_9__["UserComponent"],
                 _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_10__["SignInComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
-                _task_task_component__WEBPACK_IMPORTED_MODULE_16__["TaskComponent"],
-                _bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"]
+                _home_task_task_component__WEBPACK_IMPORTED_MODULE_16__["TaskComponent"],
+                _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_17__["BillComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -154,7 +156,8 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
                 ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrModule"].forRoot(),
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(_routes__WEBPACK_IMPORTED_MODULE_13__["appRoutes"]) //uses routs in routes.ts file
+                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(_routes__WEBPACK_IMPORTED_MODULE_13__["appRoutes"]),
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__["NgbModule"].forRoot()
             ],
             providers: [_shared_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_14__["AuthGuard"],
                 ,
@@ -306,10 +309,10 @@ var AuthInterceptor = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/bill/bill.component.css":
-/*!*****************************************!*\
-  !*** ./src/app/bill/bill.component.css ***!
-  \*****************************************/
+/***/ "./src/app/home/bill/bill.component.css":
+/*!**********************************************!*\
+  !*** ./src/app/home/bill/bill.component.css ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -317,21 +320,21 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/bill/bill.component.html":
-/*!******************************************!*\
-  !*** ./src/app/bill/bill.component.html ***!
-  \******************************************/
+/***/ "./src/app/home/bill/bill.component.html":
+/*!***********************************************!*\
+  !*** ./src/app/home/bill/bill.component.html ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  bill works!\n</p>\n"
+module.exports = "<p>\r\n    This is from my bill component html page!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ "./src/app/bill/bill.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/bill/bill.component.ts ***!
-  \****************************************/
+/***/ "./src/app/home/bill/bill.component.ts":
+/*!*********************************************!*\
+  !*** ./src/app/home/bill/bill.component.ts ***!
+  \*********************************************/
 /*! exports provided: BillComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -357,8 +360,8 @@ var BillComponent = /** @class */ (function () {
     BillComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-bill',
-            template: __webpack_require__(/*! ./bill.component.html */ "./src/app/bill/bill.component.html"),
-            styles: [__webpack_require__(/*! ./bill.component.css */ "./src/app/bill/bill.component.css")]
+            template: __webpack_require__(/*! ./bill.component.html */ "./src/app/home/bill/bill.component.html"),
+            styles: [__webpack_require__(/*! ./bill.component.css */ "./src/app/home/bill/bill.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], BillComponent);
@@ -387,7 +390,7 @@ module.exports = "/**Approved**/"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n  <div class=\"nav-wrapper\">\n    <class=\"brand-logo center\">\n      <i class=\"material-icons\">note_add</i>Notify</a>\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n      <li>\n        <a (click)=\"Logout()\">Logout</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<div class=\"card blue\">\n  <div class=\"card-content\">\n    <h1>Welcome, <span>{{userClaims.Email}}</span>!</h1>\n  </div>\n  <div class=\"card-tabs\">\n    <ul class=\"tabs tabs-fixed-width\">\n      <li class=\"tab\"><a href=\"#Task1\">Tasks</a></li>\n      <li class=\"tab\"><a class=\"active\" href=\"#Bills2\">Bills</a></li>\n    </ul>\n  </div>\n  <div class=\"card-content grey lighten-4\">\n    <div id=\"Task1\">Tasks</div>\n    <div id=\"Bills2\">Bills</div>\n  </div>\n</div>\n\n\n<div class=\"row\" *ngIf=\"userClaims\">\n  <div class=\"col s12 m7\">\n    <div class=\"card\">\n      <div class=\"card-content\">\n        <span>Email : {{userClaims.Email}}</span>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<nav>\r\n  <div class=\"nav-wrapper green\">\r\n    <a href=\"home\" class=\"brand-logo center\">\r\n      <i class=\"material-icons\">note_add</i>Notify</a>\r\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n      <li>\r\n        <a (click)=\"Logout()\">Logout</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"col s12 m6\">\r\n  <div class=\"card blue\">\r\n    <div class=\"card-content white-text\">\r\n      <div class=\"row\" *ngIf=\"userClaims\">\r\n        <h5>\r\n          <span>Welcome, {{userClaims.Email}}!</span>\r\n        </h5>\r\n      </div>\r\n    </div>\r\n    <div class=\"card-tabs\">\r\n      <ul class=\"tabs tabs-fixed-width tabs-transparent\">\r\n        <!--When Tasks is triggered, it should use the /tasks route.\r\n          The /tasks route is defined in routes.ts file which is imported\r\n          in the app.module file. The active is just for css on tasks tab -->\r\n        <li class=\"tab\">\r\n          <a routerLink='/tasks' routerLinkActive='active'>TASKS</a>\r\n        </li>\r\n        <li class=\"tab\">\r\n          <a routerLink='/bills' routerLinkActive='active'>BILLS</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"card-content blue lighten-5\">\r\n      <div>\r\n        <router-outlet></router-outlet>\r\n        <!--The stuff from each route mentioned above gets displayed here-->\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n  \r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -449,6 +452,104 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/home/task/task.component.css":
+/*!**********************************************!*\
+  !*** ./src/app/home/task/task.component.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/home/task/task.component.html":
+/*!***********************************************!*\
+  !*** ./src/app/home/task/task.component.html ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  This is from my task component html page!\r\n</p>\r\n\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <p>Works!</p>\r\n  <ul>\r\n    <li *ngFor=\"let task of taskBucket\">\r\n      TaskDescription : {{task.TaskDescription}} <br>\r\n      DueDateTime: {{ task.DueDateTime | date:'longDate' }}\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">subject</i>\r\n      <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">description</i>\r\n      <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">date_range</i>\r\n      <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"checkbox col s12\">\r\n    <input type=\"checkbox\" id=\"completeTask\" ngModel name=\"TaskCompleted\">\r\n    <label for=\"completeTask\">Completed?</label>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/home/task/task.component.ts":
+/*!*********************************************!*\
+  !*** ./src/app/home/task/task.component.ts ***!
+  \*********************************************/
+/*! exports provided: TaskComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TaskComponent = /** @class */ (function () {
+    function TaskComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
+        this.isPostError = false;
+    }
+    //We don't have to put it in here
+    TaskComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getAllTaskItems().subscribe(function (data) {
+            _this.taskBucket = data;
+        });
+    };
+    TaskComponent.prototype.OnSubmitPost = function (Title, Description, DueDate) {
+        var _this = this;
+        var postedTask = {
+            TaskId: 0,
+            UserId: 0,
+            TaskTitle: Title,
+            TaskDescription: Description,
+            DueDateTime: DueDate,
+            NotifyDateTime: DueDate,
+            CreatedDate: DueDate,
+            ModifiedDate: DueDate,
+            HasDueDate: true,
+            HasNotifyDate: false,
+            IsCompleted: false
+        };
+        this.userService.postTaskItem(postedTask).subscribe(function (data) {
+            _this.router.navigate(['/tasks']);
+            console.log("yeah posted");
+        }, function (err) {
+            console.log(err);
+            _this.isPostError = true;
+        });
+    };
+    TaskComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-task',
+            template: __webpack_require__(/*! ./task.component.html */ "./src/app/home/task/task.component.html"),
+            styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/home/task/task.component.css")]
+        }),
+        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], TaskComponent);
+    return TaskComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/routes.ts":
 /*!***************************!*\
   !*** ./src/app/routes.ts ***!
@@ -464,6 +565,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user/sign-up/sign-up.component */ "./src/app/user/sign-up/sign-up.component.ts");
 /* harmony import */ var _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user/sign-in/sign-in.component */ "./src/app/user/sign-in/sign-in.component.ts");
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
+/* harmony import */ var _home_task_task_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/task/task.component */ "./src/app/home/task/task.component.ts");
+/* harmony import */ var _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/bill/bill.component */ "./src/app/home/bill/bill.component.ts");
+
+
 
 
 
@@ -472,7 +577,17 @@ __webpack_require__.r(__webpack_exports__);
 var appRoutes = [
     //The home component requires authentication
     //canActicate is implemented in auth.guard.ts file
-    { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] },
+    {
+        path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
+    },
+    {
+        path: 'tasks', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
+        children: [{ path: '', component: _home_task_task_component__WEBPACK_IMPORTED_MODULE_5__["TaskComponent"] }]
+    },
+    {
+        path: 'bills', component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
+        children: [{ path: '', component: _home_bill_bill_component__WEBPACK_IMPORTED_MODULE_6__["BillComponent"] }]
+    },
     //These routes do not need authentication
     {
         //When signup url is used it will load two components: UserComponent and SignUpComponent
@@ -538,6 +653,27 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUserInfo = function () {
         return this.http.get(this.rootUrl + '/api/Account/UserInfo');
     };
+    /**********************TaskItem**********************/
+    //GET api/TaskItem
+    UserService.prototype.getAllTaskItems = function () {
+        return this.http.get(this.rootUrl + '/api/TaskItem');
+    };
+    //GET api/TaskItem/{id}	 
+    UserService.prototype.getOneTaskItem = function (id) {
+        return this.http.get(this.rootUrl + '/api/TaskItem/' + id);
+    };
+    //PUT api/TaskItem/{id}
+    UserService.prototype.putTaskItem = function (id, postedTask) {
+        return this.http.put(this.rootUrl + '/api/TaskItem/' + id, postedTask);
+    };
+    //POST api/TaskItem	
+    UserService.prototype.postTaskItem = function (postedTask) {
+        return this.http.post(this.rootUrl + '/api/TaskItem', postedTask);
+    };
+    //DELETE api/TaskItem/{id}
+    UserService.prototype.deleteTaskItem = function (id) {
+        return this.http.delete(this.rootUrl + '/api/TaskItem/' + id);
+    };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root' //Didn't have this
@@ -548,69 +684,6 @@ var UserService = /** @class */ (function () {
 }());
 
 //Approved
-
-
-/***/ }),
-
-/***/ "./src/app/task/task.component.css":
-/*!*****************************************!*\
-  !*** ./src/app/task/task.component.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/task/task.component.html":
-/*!******************************************!*\
-  !*** ./src/app/task/task.component.html ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  task works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/task/task.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/task/task.component.ts ***!
-  \****************************************/
-/*! exports provided: TaskComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TaskComponent = /** @class */ (function () {
-    function TaskComponent() {
-    }
-    TaskComponent.prototype.ngOnInit = function () {
-    };
-    TaskComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-task',
-            template: __webpack_require__(/*! ./task.component.html */ "./src/app/task/task.component.html"),
-            styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/task/task.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], TaskComponent);
-    return TaskComponent;
-}());
-
 
 
 /***/ }),
@@ -633,7 +706,7 @@ module.exports = "/**Approved**/"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--isLoginError is a property in sin-in.component.ts file-->\n<div *ngIf=\"isLoginError\" class=\"red-text center error-message\">\n  <i class=\"material-icons\">error</i> Incorrect email or password\n</div>\n<form #loginForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmit(Email.value,Password.value)\">\n <div class=\"row\">\n   <div class=\"input-field col s12\">\n     <i class=\"material-icons prefix\">account_circle</i>\n     <input type=\"text\" #Email ngModel name=\"Email\" placeholder=\"Email\" required>\n   </div>\n </div>\n <div class=\"row\">\n    <div class=\"input-field col s12\">\n      <i class=\"material-icons prefix\">vpn_key</i>\n      <input type=\"password\" #Password ngModel name=\"Password\" placeholder=\"Password\" required>\n    </div>\n  </div>\n  <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <button [disabled]=\"!loginForm.valid\" class=\"btn-large btn-submit\" type=\"submit\">Login</button>\n      </div>\n    </div>\n</form>\n\n<!--Approved-->\n"
+module.exports = "<!--isLoginError is a property in sin-in.component.ts file-->\r\n<div *ngIf=\"isLoginError\" class=\"red-text center error-message\">\r\n  <i class=\"material-icons\">error</i> Incorrect email or password\r\n</div>\r\n<form #loginForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmit(Email.value,Password.value)\">\r\n <div class=\"row\">\r\n   <div class=\"input-field col s12\">\r\n     <i class=\"material-icons prefix\">account_circle</i>\r\n     <input type=\"text\" #Email ngModel name=\"Email\" placeholder=\"Email\" required>\r\n   </div>\r\n </div>\r\n <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">vpn_key</i>\r\n      <input type=\"password\" #Password ngModel name=\"Password\" placeholder=\"Password\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n      <div class=\"input-field col s12\">\r\n        <button [disabled]=\"!loginForm.valid\" class=\"btn-large btn-submit\" type=\"submit\">Login</button>\r\n      </div>\r\n    </div>\r\n</form>\r\n\r\n\r\n\r\n<!--Approved-->\r\n"
 
 /***/ }),
 
