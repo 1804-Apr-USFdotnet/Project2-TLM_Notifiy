@@ -18,8 +18,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { TaskComponent } from './home/task/task.component';
 import { BillComponent } from './home/bill/bill.component';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -37,8 +35,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes), //uses routs in routes.ts file
-    NgbModule.forRoot()
+    RouterModule.forRoot(appRoutes) //uses routs in routes.ts file
   ],
   providers: [UserService,AuthGuard,
     ,
@@ -50,7 +47,4 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
 
