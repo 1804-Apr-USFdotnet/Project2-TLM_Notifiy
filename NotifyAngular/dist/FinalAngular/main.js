@@ -470,7 +470,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  This is from my task component html page!\r\n</p>\r\n\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <p>Works!</p>\r\n  <ul>\r\n    <li *ngFor=\"let task of taskBucket\">\r\n      {{ task.TaskDescription }}\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<input [matDatepicker]=\"myDatepicker\">\r\n<mat-datepicker #myDatepicker></mat-datepicker>\r\n"
+module.exports = "<p>\r\n  This is from my task component html page!\r\n</p>\r\n\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <p>Works!</p>\r\n  <ul>\r\n    <li *ngFor=\"let task of taskBucket\">\r\n      TaskDescription : {{task.TaskDescription}} <br>\r\n      DueDateTime: {{ task.DueDateTime | date:'longDate' }}\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">subject</i>\r\n      <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">description</i>\r\n      <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">date_range</i>\r\n      <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"checkbox col s12\">\r\n    <input type=\"checkbox\" id=\"completeTask\" ngModel name=\"TaskCompleted\">\r\n    <label for=\"completeTask\">Completed?</label>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -486,6 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -497,9 +498,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var TaskComponent = /** @class */ (function () {
-    function TaskComponent(userService) {
+    function TaskComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
+        this.isPostError = false;
     }
     //We don't have to put it in here
     TaskComponent.prototype.ngOnInit = function () {
@@ -508,13 +512,36 @@ var TaskComponent = /** @class */ (function () {
             _this.taskBucket = data;
         });
     };
+    TaskComponent.prototype.OnSubmitPost = function (Title, Description, DueDate) {
+        var _this = this;
+        var postedTask = {
+            TaskId: 0,
+            UserId: 0,
+            TaskTitle: Title,
+            TaskDescription: Description,
+            DueDateTime: DueDate,
+            NotifyDateTime: DueDate,
+            CreatedDate: DueDate,
+            ModifiedDate: DueDate,
+            HasDueDate: true,
+            HasNotifyDate: false,
+            IsCompleted: false
+        };
+        this.userService.postTaskItem(postedTask).subscribe(function (data) {
+            _this.router.navigate(['/tasks']);
+            console.log("yeah posted");
+        }, function (err) {
+            console.log(err);
+            _this.isPostError = true;
+        });
+    };
     TaskComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-task',
             template: __webpack_require__(/*! ./task.component.html */ "./src/app/home/task/task.component.html"),
             styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/home/task/task.component.css")]
         }),
-        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], TaskComponent);
     return TaskComponent;
 }());
@@ -636,38 +663,12 @@ var UserService = /** @class */ (function () {
         return this.http.get(this.rootUrl + '/api/TaskItem/' + id);
     };
     //PUT api/TaskItem/{id}
-    UserService.prototype.putTaskItem = function (postedTask) {
-        var body = {
-            TaskId: 0,
-            UserId: postedTask.UserId,
-            TaskTitle: postedTask.TaskTitle,
-            TaskDescription: postedTask.TaskDescription,
-            DueDateTime: postedTask.DueDateTime,
-            NotifyDateTime: postedTask.NotifyDateTime,
-            CreatedDate: postedTask.CreatedDate,
-            ModifiedDate: postedTask.ModifiedDate,
-            HasDueDate: postedTask.HasDueDate,
-            HasNotifyDate: postedTask.HasNotifyDate,
-            IsCompleted: postedTask.IsCompleted
-        };
-        return this.http.put(this.rootUrl + '/api/TaskItem/' + postedTask.TaskId, body);
+    UserService.prototype.putTaskItem = function (id, postedTask) {
+        return this.http.put(this.rootUrl + '/api/TaskItem/' + id, postedTask);
     };
     //POST api/TaskItem	
     UserService.prototype.postTaskItem = function (postedTask) {
-        var body = {
-            TaskId: 0,
-            UserId: postedTask.UserId,
-            TaskTitle: postedTask.TaskTitle,
-            TaskDescription: postedTask.TaskDescription,
-            DueDateTime: postedTask.DueDateTime,
-            NotifyDateTime: postedTask.NotifyDateTime,
-            CreatedDate: postedTask.CreatedDate,
-            ModifiedDate: postedTask.ModifiedDate,
-            HasDueDate: postedTask.HasDueDate,
-            HasNotifyDate: postedTask.HasNotifyDate,
-            IsCompleted: postedTask.IsCompleted
-        };
-        return this.http.post(this.rootUrl + '/api/TaskItem', body);
+        return this.http.post(this.rootUrl + '/api/TaskItem', postedTask);
     };
     //DELETE api/TaskItem/{id}
     UserService.prototype.deleteTaskItem = function (id) {
@@ -705,7 +706,7 @@ module.exports = "/**Approved**/"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--isLoginError is a property in sin-in.component.ts file-->\n<div *ngIf=\"isLoginError\" class=\"red-text center error-message\">\n  <i class=\"material-icons\">error</i> Incorrect email or password\n</div>\n<form #loginForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmit(Email.value,Password.value)\">\n <div class=\"row\">\n   <div class=\"input-field col s12\">\n     <i class=\"material-icons prefix\">account_circle</i>\n     <input type=\"text\" #Email ngModel name=\"Email\" placeholder=\"Email\" required>\n   </div>\n </div>\n <div class=\"row\">\n    <div class=\"input-field col s12\">\n      <i class=\"material-icons prefix\">vpn_key</i>\n      <input type=\"password\" #Password ngModel name=\"Password\" placeholder=\"Password\" required>\n    </div>\n  </div>\n  <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <button [disabled]=\"!loginForm.valid\" class=\"btn-large btn-submit\" type=\"submit\">Login</button>\n      </div>\n    </div>\n</form>\n\n<!--Approved-->\n"
+module.exports = "<!--isLoginError is a property in sin-in.component.ts file-->\r\n<div *ngIf=\"isLoginError\" class=\"red-text center error-message\">\r\n  <i class=\"material-icons\">error</i> Incorrect email or password\r\n</div>\r\n<form #loginForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmit(Email.value,Password.value)\">\r\n <div class=\"row\">\r\n   <div class=\"input-field col s12\">\r\n     <i class=\"material-icons prefix\">account_circle</i>\r\n     <input type=\"text\" #Email ngModel name=\"Email\" placeholder=\"Email\" required>\r\n   </div>\r\n </div>\r\n <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">vpn_key</i>\r\n      <input type=\"password\" #Password ngModel name=\"Password\" placeholder=\"Password\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n      <div class=\"input-field col s12\">\r\n        <button [disabled]=\"!loginForm.valid\" class=\"btn-large btn-submit\" type=\"submit\">Login</button>\r\n      </div>\r\n    </div>\r\n</form>\r\n\r\n\r\n\r\n<!--Approved-->\r\n"
 
 /***/ }),
 
