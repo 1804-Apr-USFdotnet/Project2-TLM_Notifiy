@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
@@ -11,7 +12,7 @@ import { BillItem } from './billItem.model';
   providedIn: 'root'  //Didn't have this
 })
 export class UserService {
-  readonly rootUrl = 'http://localhost:52739';
+  readonly rootUrl = environment.rootUrl;
   constructor(private http: HttpClient) { }
 
   registerUser(user: RegisterBindingModel) {

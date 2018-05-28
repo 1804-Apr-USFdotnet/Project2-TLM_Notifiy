@@ -42,7 +42,7 @@ export class BillComponent implements OnInit {
     }
 
     this.userService.postBillItem(newBill).subscribe((data: any) => { 
-      window.location.reload();
+      this.getBillItems();
     },
       (err: HttpErrorResponse) => {
         console.log(err);
@@ -64,7 +64,6 @@ export class BillComponent implements OnInit {
 
     this.userService.putBillItem(id, bill).subscribe((data: any) => {
       this.getBillItems();
-      console.log("fukkin yea");
     },
     (err:HttpErrorResponse) => {
       console.log(err);
@@ -74,7 +73,7 @@ export class BillComponent implements OnInit {
 
   onDelete(id: Number) {
     this.userService.deleteBillItem(id).subscribe((data: any) => {
-      this.router.navigate(['/bills']);
+      this.getBillItems();
     },
     (err: HttpErrorResponse) => {
       console.log(err);
