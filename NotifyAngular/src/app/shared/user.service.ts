@@ -1,3 +1,4 @@
+import { BillItem } from './billItem.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
@@ -65,12 +66,31 @@ export class UserService {
 
   
   /**********************BillItem**********************/
-  //GET api/BillItem
-  //GET api/BillItem/{id}	
-  //PUT api/BillItem/{id}
-  //POST api/BillItem
-  //DELETE api/BillItem/{id}
 
+  //GET api/BillItem
+  getAllBillItems() {
+    return this.http.get(this.rootUrl + '/api/BillItem');
+  }
+
+  //GET api/BillItem/{id}	
+  getBillItem(id: Number) {
+    return this.http.get(this.rootUrl + `/api/BillItem/{id}`);
+  }
+
+  //PUT api/BillItem/{id}
+  putBillItem(id: Number, putBill: BillItem) {
+    return this.http.put(this.rootUrl + `/api/BillItem/{id}`, putBill);
+  }
+
+  //POST api/BillItem
+  postBillItem(postBill: BillItem) {
+    return this.http.post(this.rootUrl + '/api/BillItem', postBill);
+  }
+
+  //DELETE api/BillItem/{id}
+  deleteBillItem(id: Number) {
+    return this.http.delete(this.rootUrl + `/api/BillItem/{id}`);
+  }
 }
 
 
