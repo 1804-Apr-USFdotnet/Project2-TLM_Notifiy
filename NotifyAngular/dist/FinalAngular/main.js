@@ -473,7 +473,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  input-form works!\n</p>\n"
+module.exports = "\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\n    <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <i class=\"material-icons prefix\">subject</i>\n        <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <i class=\"material-icons prefix\">description</i>\n        <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <i class=\"material-icons prefix\">date_range</i>\n        <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <button type=\"submit\"><a class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a></button>\n        <!-- <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button> -->\n      </div>\n    </div>\n  </form>"
 
 /***/ }),
 
@@ -488,6 +488,8 @@ module.exports = "<p>\n  input-form works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputFormComponent", function() { return InputFormComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -498,10 +500,38 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var InputFormComponent = /** @class */ (function () {
-    function InputFormComponent() {
+    function InputFormComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
+        this.isPostError = false;
     }
     InputFormComponent.prototype.ngOnInit = function () {
+    };
+    InputFormComponent.prototype.OnSubmitPost = function (Title, Description, DueDate) {
+        var _this = this;
+        var postedTask = {
+            TaskId: 0,
+            UserId: 0,
+            TaskTitle: Title,
+            TaskDescription: Description,
+            DueDateTime: DueDate,
+            NotifyDateTime: DueDate,
+            CreatedDate: DueDate,
+            ModifiedDate: DueDate,
+            HasDueDate: true,
+            HasNotifyDate: false,
+            IsCompleted: false
+        };
+        this.userService.postTaskItem(postedTask).subscribe(function (data) {
+            _this.router.navigate(['/tasks']);
+            console.log("yeah posted");
+        }, function (err) {
+            console.log(err);
+            _this.isPostError = true;
+        });
     };
     InputFormComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -509,7 +539,7 @@ var InputFormComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./input-form.component.html */ "./src/app/home/input-form/input-form.component.html"),
             styles: [__webpack_require__(/*! ./input-form.component.css */ "./src/app/home/input-form/input-form.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], InputFormComponent);
     return InputFormComponent;
 }());
@@ -536,7 +566,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--For the cards-->\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <div *ngFor=\"let task of taskBucket\" class=\"card\">\r\n    <!-- <a [routerLink]=\"['/presentation', presentation._id]\"></a> -->\r\n    <div class=\"card-block\">\r\n      <div class=\"col s12 m6 l3\">\r\n        <div class=\"card blue-grey darken-1\">\r\n          <div class=\"card-content white-text\">\r\n            <span class=\"card-title\"> {{task.TaskTitle | uppercase}}</span>\r\n            <hr>\r\n            <p>{{task.TaskDescription}}</p>\r\n            <br> {{ task.DueDateTime | date:'longDate' }}\r\n          </div>\r\n          <div class=\"card-panel hoverable card-action\">\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">edit</i>\r\n            </a>\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">delete</i>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<a  routerLink='/input-form' routerLinkActive='active'>Form Stuff</a>\r\n<div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n<!-- <a class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a> -->\r\n<!-- <button class=\"btn-floating btn-large cyan pulse\" type=\"submit\"><i class=\"material-icons\">add_circle</i></button> -->\r\n\r\n<form #postForm=\"ngForm\" class=\"col s12 white\" (ngSubmit)=\"OnSubmitPost(Title.value,Description.value,DueDate.value)\">\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">subject</i>\r\n      <input type=\"text\" #Title ngModel name=\"Title\" placeholder=\"Title\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">description</i>\r\n      <input type=\"text\" #Description ngModel name=\"Description\" placeholder=\"Description\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <i class=\"material-icons prefix\">date_range</i>\r\n      <input type=\"date\" #DueDate ngModel name=\"DueDate\" placeholder=\"DueDate\" required>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"input-field col s12\">\r\n      <button type=\"submit\"><a class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a></button>\r\n      <!-- <button [disabled]=\"!postForm.valid\" class=\"btn btn-success btn-submit\" type=\"submit\">Post</button> -->\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<!--For the cards-->\r\n<div class=\"row\" *ngIf=\"taskBucket\">\r\n  <div *ngFor=\"let task of taskBucket\" class=\"card\">\r\n    <!-- <a [routerLink]=\"['/presentation', presentation._id]\"></a> -->\r\n    <div class=\"card-block\">\r\n      <div class=\"col s12 m6 l3\">\r\n        <div class=\"card blue-grey darken-1\">\r\n          <div class=\"card-content white-text\">\r\n            <span class=\"card-title\"> {{task.TaskTitle | uppercase}}</span>\r\n            <hr>\r\n            <p>{{task.TaskDescription}}</p>\r\n            <br> {{ task.DueDateTime | date:'longDate' }}\r\n          </div>\r\n          <div class=\"card-panel hoverable card-action\">\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">edit</i>\r\n            </a>\r\n            <a href=\"#\">\r\n              <i class=\"material-icons prefix\">delete</i>\r\n            </a>\r\n            <a href=\"https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin\">\r\n                <i class=\"material-icons prefix\">email</i>\r\n              </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<a routerLink='/input-form' routerLinkActive='active' class=\"btn-floating btn-large cyan pulse\"><i class=\"material-icons\">add_circle</i></a>\r\n<div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n<!--make it like a button-->\r\n<!-- <button class=\"btn-floating btn-large cyan pulse\" type=\"submit\"><i class=\"material-icons\">add_circle</i></button> -->\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -552,7 +582,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/user.service */ "./src/app/shared/user.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -564,12 +593,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var TaskComponent = /** @class */ (function () {
-    function TaskComponent(userService, router) {
+    function TaskComponent(userService) {
         this.userService = userService;
-        this.router = router;
-        this.isPostError = false;
     }
     //We don't have to put it in here
     TaskComponent.prototype.ngOnInit = function () {
@@ -578,36 +604,13 @@ var TaskComponent = /** @class */ (function () {
             _this.taskBucket = data;
         });
     };
-    TaskComponent.prototype.OnSubmitPost = function (Title, Description, DueDate) {
-        var _this = this;
-        var postedTask = {
-            TaskId: 0,
-            UserId: 0,
-            TaskTitle: Title,
-            TaskDescription: Description,
-            DueDateTime: DueDate,
-            NotifyDateTime: DueDate,
-            CreatedDate: DueDate,
-            ModifiedDate: DueDate,
-            HasDueDate: true,
-            HasNotifyDate: false,
-            IsCompleted: false
-        };
-        this.userService.postTaskItem(postedTask).subscribe(function (data) {
-            _this.router.navigate(['/tasks']);
-            console.log("yeah posted");
-        }, function (err) {
-            console.log(err);
-            _this.isPostError = true;
-        });
-    };
     TaskComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-task',
             template: __webpack_require__(/*! ./task.component.html */ "./src/app/home/task/task.component.html"),
             styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/home/task/task.component.css")]
         }),
-        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], TaskComponent);
     return TaskComponent;
 }());
