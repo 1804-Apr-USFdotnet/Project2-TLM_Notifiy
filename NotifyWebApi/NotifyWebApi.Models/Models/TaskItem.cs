@@ -19,17 +19,17 @@ namespace NotifyWebApi.Models
         public string TaskDescription { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime DueDateTime { get; set; }
+        public DateTime? DueDateTime { get; set; }
         [DataType(DataType.DateTime)]
-        public DateTime NotifyDateTime { get; set; }
+        public DateTime? NotifyDateTime { get; set; }
         [DataType(DataType.Date)]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [DataType(DataType.Date)]
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public bool HasDueDate { get; set; }
-        public bool HasNotifyDate { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool? HasDueDate { get; set; }
+        public bool? HasNotifyDate { get; set; }
+        public bool? IsCompleted { get; set; }
 
         public virtual EfUser EfUser { get; set; }
     }

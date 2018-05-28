@@ -56,7 +56,6 @@ namespace NotifyWebApi.Controllers
         [ResponseType(typeof(TaskItemDto))]
         public IHttpActionResult PostTaskItem(TaskItemDto taskItemDto)
         {
-            taskItemDto.UserId = null;
             taskItemDto.UserId = GetCurrentUserId();
 
 
@@ -82,7 +81,7 @@ namespace NotifyWebApi.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
+       {
             base.Dispose(disposing);
         }
 
