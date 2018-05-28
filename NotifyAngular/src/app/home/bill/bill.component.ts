@@ -21,4 +21,17 @@ export class BillComponent implements OnInit {
     });
   }
 
+  onPost(billHolder: string, dueDate: Date, amountOwed: Number,
+  paid: boolean, auto: boolean, description?: string) {
+    const newBill: BillItem = {
+      BillHolder: billHolder,
+      DueDate: dueDate,
+      AmountOwed: amountOwed,
+      Paid: paid,
+      Automatic: auto,
+      Description: description
+    }
+
+    
+  }
 }

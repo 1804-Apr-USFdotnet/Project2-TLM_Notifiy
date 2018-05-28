@@ -1,4 +1,3 @@
-import { BillItem } from './billItem.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
@@ -6,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { RegisterBindingModel } from './user.model';
 import { TaskItem } from './taskitem.model';
+import { BillItem } from './billItem.model';
 
 @Injectable({
   providedIn: 'root'  //Didn't have this
