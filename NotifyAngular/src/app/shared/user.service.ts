@@ -74,12 +74,12 @@ export class UserService {
 
   //GET api/BillItem/{id}	
   getBillItem(id: Number) {
-    return this.http.get(this.rootUrl + `/api/BillItem/{id}`);
+    return this.http.get(this.rootUrl + `/api/BillItem/${id}`);
   }
 
   //PUT api/BillItem/{id}
   putBillItem(id: Number, putBill: BillItem) {
-    return this.http.put(this.rootUrl + `/api/BillItem/{id}`, putBill);
+    return this.http.put(this.rootUrl + `/api/BillItem/${id}`, putBill);
   }
 
   //POST api/BillItem
@@ -89,7 +89,7 @@ export class UserService {
 
   //DELETE api/BillItem/{id}
   deleteBillItem(id: Number) {
-    return this.http.delete(this.rootUrl + `/api/BillItem/{id}`);
+    return this.http.delete(this.rootUrl + `/api/BillItem/${id}`);
   }
 }
 
