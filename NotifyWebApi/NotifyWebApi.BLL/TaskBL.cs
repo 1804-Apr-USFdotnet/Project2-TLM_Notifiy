@@ -73,6 +73,8 @@ namespace NotifyWebApi.BLL
             try
             {
                 var taskItem = _uoWork.Tasks.Get((long)taskItemDto.TaskId);
+                taskItemDto.CreatedDate = taskItem.CreatedDate;  //Reset to orginal value.
+                taskItemDto.ModifiedDate = DateTime.Now;  //Set Modified Date
                 taskItem = _mapper.Map(taskItemDto, taskItem);
                 _uoWork.Tasks.Update(taskItem);
                 _uoWork.Complete();
@@ -89,6 +91,7 @@ namespace NotifyWebApi.BLL
         public long? PostTaskItem(TaskItemDto taskItemDto)
         {
             var taskItem = _mapper.Map<TaskItemDto, TaskItem>(taskItemDto);
+            taskItem.CreatedDate = DateTime.Now;  //Set Created Date
             try
             {
                 _uoWork.Tasks.Add(taskItem);
