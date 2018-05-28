@@ -1,7 +1,6 @@
 <!--For the cards-->
 <div class="row" *ngIf="taskBucket">
   <div *ngFor="let task of taskBucket" class="card">
-    <!-- <a [routerLink]="['/presentation', presentation._id]"></a> -->
     <div class="card-block">
       <div class="col s12 m6 l3">
         <div class="card blue-grey darken-1">
@@ -18,6 +17,9 @@
             <a href="#">
               <i class="material-icons prefix">delete</i>
             </a>
+            <a href="https://mail.google.com" target="_blank">
+                <i class="material-icons prefix">email</i>
+              </a>
           </div>
         </div>
       </div>
@@ -29,9 +31,6 @@
 <div class="row">
     <router-outlet></router-outlet>
 </div>
-
-<!--make it like a button-->
-<!-- <button class="btn-floating btn-large cyan pulse" type="submit"><i class="material-icons">add_circle</i></button> -->
 
 
 
