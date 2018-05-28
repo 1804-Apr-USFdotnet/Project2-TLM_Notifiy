@@ -12,17 +12,5 @@ export class TaskItem{
     IsCompleted: boolean;
 }
 
-    // const body: TaskItem = {
-    //   TaskId: 0,                           //should I use null
-    //   UserId: postedTask.UserId,
-    //   TaskTitle: postedTask.TaskTitle,            
-    //   TaskDescription: postedTask.TaskDescription,       
-    //   DueDateTime: postedTask.DueDateTime,
-    //   NotifyDateTime: postedTask.NotifyDateTime,
-    //   CreatedDate: postedTask.CreatedDate,
-    //   ModifiedDate: postedTask.ModifiedDate,
-    //   HasDueDate: postedTask.HasDueDate,
-    //   HasNotifyDate: postedTask.HasNotifyDate,
-    //   IsCompleted: postedTask.IsCompleted
-    // }
+
 

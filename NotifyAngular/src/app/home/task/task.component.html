@@ -6,12 +6,13 @@
   <p>Works!</p>
   <ul>
     <li *ngFor="let task of taskBucket">
-      {{ task.TaskDescription }}
+      TaskDescription : {{task.TaskDescription}} <br>
+      DueDateTime: {{ task.DueDateTime | date:'longDate' }}
     </li>
   </ul>
 </div>
 
-<form #postForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitPost(Title.value,Description.value,DueDate.valueAsDate)">
+<form #postForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitPost(Title.value,Description.value,DueDate.value)">
   <div class="row">
     <div class="input-field col s12">
       <i class="material-icons prefix">subject</i>

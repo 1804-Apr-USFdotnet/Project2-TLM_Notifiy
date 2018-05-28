@@ -25,22 +25,24 @@ export class TaskComponent implements OnInit {
 
   OnSubmitPost(Title : string, Description : string, DueDate: Date) {
     const postedTask: TaskItem = {
-      TaskId: null,
-      UserId: null,
+      TaskId: 0,
+      UserId: 0,
       TaskTitle: Title,
       TaskDescription: Description,
       DueDateTime: DueDate,
-      NotifyDateTime: null,
-      CreatedDate: null,
-      ModifiedDate: null,
-      HasDueDate: null,
-      HasNotifyDate: null,
-      IsCompleted: null
+      NotifyDateTime: DueDate,
+      CreatedDate: DueDate,
+      ModifiedDate: DueDate,
+      HasDueDate: true,
+      HasNotifyDate: false,
+      IsCompleted: false
     }
     this.userService.postTaskItem(postedTask).subscribe((data: any) => {
       this.router.navigate(['/tasks']);
+      console.log("yeah posted");
     },
       (err: HttpErrorResponse) => {
+        console.log(err);
         this.isPostError = true;
       });
   }
