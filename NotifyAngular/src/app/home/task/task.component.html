@@ -11,14 +11,14 @@
             <br> {{ task.DueDateTime | date:'longDate' }}
           </div>
           <div class="card-panel hoverable card-action">
+            
+            <a id="putButton" (click)="OnPut(task.TaskId, task)">
+              <i class="material-icons prefix">edit</i> 
+            </a>
 
-            <button class="btn btn-success" id="putButton" (click)="OnPut(task.TaskId, task)">
-              <i class="material-icons prefix">edit</i>
-            </button><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-           
-            <button class="btn btn-success" id="deleteButton" (click)="OnDelete(task.TaskId)">
+            <a id="deleteButton" (click)="OnDelete(task.TaskId)">
               <i class="material-icons prefix">delete</i>
-            </button>
+            </a>
 
           </div>
         </div>
