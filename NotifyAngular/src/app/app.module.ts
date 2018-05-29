@@ -41,7 +41,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot()
   ],
   providers: [UserService, AuthGuard,
-    ,
     {
       provide : HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,
