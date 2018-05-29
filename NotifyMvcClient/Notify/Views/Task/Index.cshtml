@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Notify.Models.TaskDto>
+
+@{
+    ViewBag.Title = "Index";
+    string token = (string) ViewData["token"];
+    string host = (string) ViewData["serviceUri"];
+}
+
+<h2>Index</h2>
+<div class="col-md-10 col-md-offset-1">
+    <div class="well">
+
+        <div>
+            @Html.ActionLink("Create New", "Create", new {id = ""}, new {@class = "btn btn-default btn-sm pull-left" })
+            @Html.ActionLink("Logout", "Logout", "Account", null, new {@class = "btn btn-warning btn-sm pull-right" })
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsCompleted)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    @Html.HiddenFor(modelItem => item.UserId, new {id = item.TaskId + "_User"})
+
+                    <td>
+                        @Html.TextBoxFor(modelItem => item.TaskTitle, new {id = item.TaskId + "_Title"})
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(modelItem => item.TaskDescription, new {id = item.TaskId + "_Desc"})
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(modelItem => item.DueDateTime, new {id = item.TaskId + "_Due"})
+                    </td>
+
+
+                    <td>
+                        @Html.EditorFor(modelItem => item.IsCompleted, new {htmlAttributes = new {id = item.TaskId + "_Done"}})
+                    </td>
+                    <td>
+                        <input id="@(item.TaskId)" class="btn btn-success btn-sm saveListener" type="button" value="Save">
+                        @Html.ActionLink("Delete", "Delete", new {id = item.TaskId}, new {@class = "btn btn-primary btn-sm"})
+                    </td>
+                    @Html.HiddenFor(modelItem => item.NotifyDateTime, new {id = item.TaskId + "_ndate"})
+                    @Html.HiddenFor(modelItem => item.CreatedDate, new {id = item.TaskId + "_cdate"})
+                    @Html.HiddenFor(modelItem => item.ModifiedDate, new {id = item.TaskId + "_mdate"})
+                    @Html.HiddenFor(modelItem => item.HasDueDate, new {id = item.TaskId + "_hdd"})
+                    @Html.HiddenFor(modelItem => item.HasNotifyDate, new {id = item.TaskId + "_hnd"})
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.saveListener').click(function() {
+                let self = $(this);
+                let id = self.attr('id');
+                let TaskId = id;
+                let UserId = $('#' + id + '_User').val();
+                let TaskTitle = $('#' + id + '_Title').val();
+                let TaskDescription = $('#' + id + '_Desc').val();
+                let DueDateTime = $('#' + id + '_Due').val();
+                let NotifyDateTime = $('#' + id + '_ndate').val();
+                let CreatedDate = $('#' + id + '_cdate').val();
+                let ModifiedDate = $('#' + id + '_mdate').val();
+                let HasDueDate = $('#' + id + '_hdd').val();
+                let HasNotifyDate = $('#' + id + '_hnd').val();
+                let IsCompleted = $('#' + id + '_Done').val();
+
+                let arr = {
+                    TaskId: Number(TaskId),
+                    UserId: Number(UserId),
+                    TaskTitle: TaskTitle,
+                    TaskDescription: TaskDescription,
+                    DueDateTime: DueDateTime,
+                    NotifyDateTime: NotifyDateTime,
+                    CreatedDate: CreatedDate,
+                    ModifiedDate: ModifiedDate,
+                    HasDueDate: HasDueDate,
+                    HasNotifyDate: HasNotifyDate,
+                    IsCompleted: IsCompleted
+                }
+
+                $.ajax({
+                    url: '@host' + '/api/TaskItem/' + id,
+                    method: 'PUT',
+                    contentType: 'application/json',
+                    headers: { "Authorization": '@token' },
+                    data: JSON.stringify(arr),
+                    success:
+                        function() {
+                            window.location.href = "../Task/Index";
+                        },
+                    error: function() {
+                        alert("Something went wrong!!");
+                        window.location.href = "../Task/Index";
+                    }
+                });
+            });
+        });
+    </script>
+}

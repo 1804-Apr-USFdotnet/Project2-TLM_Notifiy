@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  rootUrl: 'http://localhost:52739'
+  rootUrl: 'http://18.218.238.212/NotifyWebApi' //Our local host: 'http://localhost:52739'
 };
 
 /*
