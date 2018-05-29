@@ -37,7 +37,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes), // uses routs in routes.ts file
+    RouterModule.forRoot(appRoutes, { useHash: true }), // uses routs in routes.ts file
     NgbModule.forRoot()
   ],
   providers: [UserService, AuthGuard,

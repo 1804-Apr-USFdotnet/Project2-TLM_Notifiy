@@ -1,6 +1,7 @@
 <nav>
   <div class="nav-wrapper black">
-    <a href="home" class="brand-logo center">
+    <!-- <a href="home" class="brand-logo center"> -->
+    <a routerLink='/tasks' routerLinkActive='active' class="brand-logo center">
       <i class="material-icons">note_add</i>Notify</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
@@ -15,12 +16,7 @@
   <div class="card teal card-image">
     <img class="two" src="https://materializecss.com/images/sample-1.jpg">
     <div class="card-content white-text" *ngIf="userClaims">
-        <h5><span>Welcome, {{userClaims.Email}}!</span></h5>
-      <!-- <div class="row" *ngIf="userClaims">
-        <h5>
-          <span>Welcome, {{userClaims.Email}}!</span>
-        </h5>
-      </div> -->
+        <h5><span>Welcome, {{ userClaims.Email.substring(0, userClaims.Email.indexOf('@')) }}!</span></h5>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width tabs-transparent">
