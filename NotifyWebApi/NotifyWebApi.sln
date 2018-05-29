@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyWebApi.Repositories",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyWebApi.Models", "NotifyWebApi.Models\NotifyWebApi.Models.csproj", "{DC6F2A7F-2B9F-4AE5-908F-4F209874F349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyWebApi.BLLTests", "NotifyWebApi.BLLTests\NotifyWebApi.BLLTests.csproj", "{21A0BEF1-4F03-4E49-93CE-3B766A2B4321}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{DC6F2A7F-2B9F-4AE5-908F-4F209874F349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC6F2A7F-2B9F-4AE5-908F-4F209874F349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC6F2A7F-2B9F-4AE5-908F-4F209874F349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A0BEF1-4F03-4E49-93CE-3B766A2B4321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A0BEF1-4F03-4E49-93CE-3B766A2B4321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A0BEF1-4F03-4E49-93CE-3B766A2B4321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A0BEF1-4F03-4E49-93CE-3B766A2B4321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
