@@ -14,7 +14,7 @@ namespace Notify.Models
 
         [Required]
         [StringLength(60)]
-        [Display(Name = "ToDo")]
+        [Display(Name = "Note")]
         public string TaskTitle { get; set; }
         [StringLength(255)]
         [Display(Name = "Description")]
