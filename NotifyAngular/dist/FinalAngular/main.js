@@ -268,7 +268,7 @@ var AuthInterceptor = /** @class */ (function () {
         //if the user is not authenticated
         if (req.headers.get('No-Auth') == "True")
             return next.handle(req.clone());
-        //if the user is authenticated 
+        //if the user is authenticated
         if (localStorage.getItem('userToken') != null) {
             var clonedreq = req.clone({
                 headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
@@ -745,7 +745,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getAllTaskItems = function () {
         return this.http.get(this.rootUrl + '/api/TaskItem');
     };
-    //GET api/TaskItem/{id}	 
+    //GET api/TaskItem/{id}
     UserService.prototype.getOneTaskItem = function (id) {
         return this.http.get(this.rootUrl + '/api/TaskItem/' + id);
     };
@@ -753,7 +753,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.putTaskItem = function (id, postedTask) {
         return this.http.put(this.rootUrl + '/api/TaskItem/' + id, postedTask);
     };
-    //POST api/TaskItem	
+    //POST api/TaskItem
     UserService.prototype.postTaskItem = function (postedTask) {
         return this.http.post(this.rootUrl + '/api/TaskItem', postedTask);
     };
@@ -766,7 +766,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getAllBillItems = function () {
         return this.http.get(this.rootUrl + '/api/BillItem');
     };
-    //GET api/BillItem/{id}	
+    //GET api/BillItem/{id}
     UserService.prototype.getBillItem = function (id) {
         return this.http.get(this.rootUrl + ("/api/BillItem/" + id));
     };
@@ -1049,7 +1049,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    rootUrl: 'http://18.218.238.212/NotifyWebApi' //Our local host: 'http://localhost:52739'
+    rootUrl: 'http://18.218.238.212/NotifyWebApi', //Our local host: 'http://localhost:52739'
 };
 /*
  * In development mode, to ignore zone related error stack frames such as
