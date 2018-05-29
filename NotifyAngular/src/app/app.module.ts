@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
@@ -37,11 +37,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes), //uses routs in routes.ts file
+    RouterModule.forRoot(appRoutes), // uses routs in routes.ts file
     NgbModule.forRoot()
   ],
-  providers: [UserService,AuthGuard,
-    ,
+  providers: [UserService, AuthGuard,
     {
       provide : HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,
