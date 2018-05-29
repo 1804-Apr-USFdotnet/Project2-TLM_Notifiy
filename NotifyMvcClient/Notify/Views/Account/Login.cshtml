@@ -1,36 +1,39 @@
-﻿<div class="col-md-10 col-md-offset-1">
+﻿@{
+    string host = (string) ViewData["Uri"];
+}
+<div class="col-md-10 col-md-offset-1">
     <div class="well">
         <table class="table table-bordered">
             <thead>
-            <tr class="success">
-                <th colspan="2">
-                    Existing User Login
-                    <a href="Register" class="btn btn-success pull-right">
-                        Register
-                    </a>
-                </th>
-            </tr>
+                <tr class="success">
+                    <th colspan="2">
+                        Existing User Login
+                        <a href="Register" class="btn btn-success pull-right">
+                            Register
+                        </a>
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Usename</td>
-                <td>
-                    <input type="text" id="txtUsername" placeholder="Username"/>
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input type="password" id="txtPassword"
-                           placeholder="Password"/>
-                </td>
-            </tr>
-            <tr class="success">
-                <td colspan="2">
-                    <input id="btnLogin" class="btn btn-success" type="button"
-                           value="Login"/>
-                </td>
-            </tr>
+                <tr>
+                    <td>Usename</td>
+                    <td>
+                        <input type="text" id="txtUsername" placeholder="Username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" id="txtPassword"
+                               placeholder="Password" />
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td colspan="2">
+                        <input id="btnLogin" class="btn btn-success" type="button"
+                               value="Login" />
+                    </td>
+                </tr>
             </tbody>
         </table>
         <!--Bootstrap alert to display error message if the login fails-->
@@ -44,16 +47,16 @@
 @section scripts
 {
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $('#linkClose').click(function() {
+            $('#linkClose').click(function () {
                 $('#divError').hide('fade');
             });
 
-            $('#btnLogin').click(function() {
+            $('#btnLogin').click(function () {
                 $.ajax({
                     // Post username, password & the grant type to /token
-                    url: 'http://localhost:52739/token',
+                    url: '@host'+'token',
                     method: 'POST',
                     contentType: 'application/json',
                     data: {
@@ -61,13 +64,13 @@
                         password: $('#txtPassword').val(),
                         grant_type: 'password'
                     },
-                    success: function(response) {
+                    success: function (response) {
                         sessionStorage.setItem("accessToken", response.access_token);
 
                         window.location.href = "Parse?parse=" + response.access_token;
                     },
                     // Display errors if any in the Bootstrap alert <div>
-                    error: function(jqXHR) {
+                    error: function (jqXHR) {
                         $('#divErrorText').text(jqXHR.responseText);
                         $('#divError').show('fade');
                     }

@@ -13,11 +13,13 @@ namespace Notify.Controllers
         // GET: Account
         public async Task<ActionResult> Login()
         {
+            ViewData["Uri"] = serviceUri.ToString();
             return View();
         }
 
         public async Task<ActionResult> Register()
         {
+            ViewData["Uri"] = serviceUri.ToString();
             return View();
         }
 
