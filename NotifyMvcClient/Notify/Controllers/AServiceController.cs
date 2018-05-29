@@ -11,6 +11,7 @@ namespace Notify.Controllers
         protected static readonly HttpClient HttpClient = new HttpClient(new HttpClientHandler() { UseCookies = false });
         protected static readonly Uri serviceUri = new Uri("http://18.218.238.212/NotifyWebApi/");//Deployed
         //protected static readonly Uri serviceUri = new Uri("http://localhost:52739/");//Local
+        protected static readonly string baseDir = "/Notify";
 
         private static readonly string tokenName = "accessToken";
 

@@ -55,8 +55,8 @@ namespace Notify.Controllers
             {
                 return RedirectToAction("Create");
             }
-            
 
+            ViewData["baseDir"] = baseDir;
             return View(Task);
         }
 

@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
     string token = (string) ViewData["token"];
     string host = (string) ViewData["serviceUri"];
+    string baseDir = (string) ViewData["baseDir"];
 }
 
 <h2>Index</h2>
@@ -107,11 +108,11 @@
                     data: JSON.stringify(arr),
                     success:
                         function() {
-                            window.location.href = "/Task/Index";
+                            window.location.href = '@baseDir'+'Task/Index';
                         },
                     error: function() {
                         alert("Something went wrong!!");
-                        window.location.href = "/Task/Index";
+                        window.location.href = '@baseDir'+'Task/Index';
                     }
                 });
             });
